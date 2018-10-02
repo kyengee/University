@@ -1,0 +1,12 @@
+﻿  Q11.cpp
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(17): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(27): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(56): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(57): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(62): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(63): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(64): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(91): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(98): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\enjcat\desktop\3-2\컴퓨터 그래픽스\glut_0920\glut_0920\q11.cpp(102): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GLUT_0920.vcxproj -> C:\Users\enjcat\Desktop\3-2\컴퓨터 그래픽스\GLUT_0920\Debug\GLUT_0920.exe
