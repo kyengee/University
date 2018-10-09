@@ -47,3 +47,13 @@ glutinitdisplaymode (GLUT_DOUBLE|GLUT_DEPTH
 glclear |GL_DEPTH_BUFFER_BIT
 
 glenable(GL_DEPT_TEST
+
+
+16에서 양쪽으 ㅣ객체는 자동으로 모델의 y축 기준으로 회전하고 ㅣㅆ다.
+16의 명려어 계속 실행
+
+키보ㅡ 명령
+i/o 카메라를 z축에대해 줌인,줌아웃 한다.
++/- 카메라를 전체의 y축기준으로 양,음의 방향으로 회전한다.
+
+카메라는 항상 중앙을 바라보고 있다.

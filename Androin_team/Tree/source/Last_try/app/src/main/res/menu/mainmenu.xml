@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_water"
+        android:title="물뜨러가기"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_food"
+        android:title="비료만들기"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_mix"
+        android:title="씨앗합성하기"
+        app:showAsAction="never"/>
+
+</menu>

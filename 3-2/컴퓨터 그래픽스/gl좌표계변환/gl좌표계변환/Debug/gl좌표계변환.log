@@ -1,16 +1,1 @@
-﻿  Q15.cpp
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(22): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(76): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(98): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(165): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(182): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(220): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(254): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(285): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(323): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(366): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(389): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(437): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(480): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-c:\users\enjcat\desktop\university\3-2\컴퓨터 그래픽스\gl좌표계변환\gl좌표계변환\q15.cpp(523): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-  gl좌표계변환.vcxproj -> C:\Users\enjcat\Desktop\University\3-2\컴퓨터 그래픽스\gl좌표계변환\Debug\gl좌표계변환.exe
+﻿  gl좌표계변환.vcxproj -> C:\Users\enjcat\Desktop\University\3-2\컴퓨터 그래픽스\gl좌표계변환\Debug\gl좌표계변환.exe

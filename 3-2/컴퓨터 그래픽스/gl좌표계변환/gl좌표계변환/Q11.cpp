@@ -49,16 +49,20 @@ GLvoid drawScene(GLvoid)
 		glClear(GL_COLOR_BUFFER_BIT);
 		glMatrixMode(GL_MODELVIEW);
 
+		
+		glPushMatrix();
+		glLoadIdentity();
 		glBegin(GL_LINE_STRIP);
-		glVertex2f(0, 300);
-		glVertex2f(800, 300);
+		glVertex2f(-1, 0);
+		glVertex2f(1, 0);
 		glEnd();
 		glBegin(GL_LINE_STRIP);
-		glVertex2f(400, 600);
-		glVertex2f(400, 0);
+		glVertex2f(0, 1);
+		glVertex2f(0, -1);
 		glEnd();
+		glPopMatrix();
 
-
+		
 		ani += temp;
 		if (temp < 0 && ani < 0)
 			ani = 300;
@@ -74,7 +78,7 @@ GLvoid drawScene(GLvoid)
 		glPopMatrix();
 
 
-
+		
 		glFlush();
 }
 

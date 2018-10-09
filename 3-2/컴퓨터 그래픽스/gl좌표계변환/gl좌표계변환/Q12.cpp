@@ -69,7 +69,7 @@ void DoTimer(int value)
 	
 	glutTimerFunc(30, DoTimer, 1);
 }
-
+int SinX = 200;
 int TriangleX = 200;
 int TriangleY = 250;
 int CircleX = 0;
@@ -91,14 +91,17 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 
+	glPushMatrix();
+	glLoadIdentity();
 	glBegin(GL_LINE_STRIP);
-	glVertex2f(0, 300);
-	glVertex2f(800, 300);
+	glVertex2f(-1, 0);
+	glVertex2f(1, 0);
 	glEnd();
 	glBegin(GL_LINE_STRIP);
-	glVertex2f(400, 600);
-	glVertex2f(400, 0);
+	glVertex2f(0, 1);
+	glVertex2f(0, -1);
 	glEnd();
+	glPopMatrix();
 
 	glPushMatrix();
 	if (way == 0)
@@ -134,7 +137,7 @@ GLvoid draw_sin() {
 	glEnd();
 	
 		glPushMatrix();
-		glTranslatef(TriangleX, 300 + sin(TriangleX *pi / 180) * 60, 0);
+		glTranslatef(SinX, 300 + sin(SinX *pi / 180) * 60, 0);
 		if (scale < 1)
 			flag = 0.1;
 		if (scale > 1.7)
@@ -147,9 +150,9 @@ GLvoid draw_sin() {
 		if(shapeFlag < 0)
 			glutSolidCube(10);
 		glPopMatrix();
-		TriangleX+=3;
-		if (TriangleX > 600)
-			TriangleX = 200;
+		SinX +=3;
+		if (SinX > 600)
+			SinX = 200;
 	
 	
 
@@ -247,7 +250,6 @@ GLvoid draw_zig(){
 	}
 
 	glEnd();
-
 	glPushMatrix();
 	glTranslatef(TriangleX, TriangleY, 0);
 	if (scale < 1)

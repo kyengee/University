@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
-
+int key_ = 1;
 struct Shape {
 	float x;
 	float y;
@@ -18,6 +18,7 @@ int length = 0;
 GLvoid drawScene(GLvoid);
 GLvoid Reshape(int w, int h);
 GLvoid Mouse(int button, int state, int x, int y);
+GLvoid Keyboard(unsigned char key, int x, int y);
 
 void DoTimer(int value);
 
@@ -33,6 +34,7 @@ void main(int argc, char *argv[])
 	glutDisplayFunc(drawScene);
 	glutReshapeFunc(Reshape);
 	glutMouseFunc(Mouse);
+	glutKeyboardFunc(Keyboard);
 	glutTimerFunc(30, DoTimer, 1);
 	glutMainLoop();
 
@@ -41,7 +43,7 @@ void main(int argc, char *argv[])
 void DoTimer(int value)
 
 {
-	Sleep(30);
+	Sleep(300);
 	glutPostRedisplay();
 	glutTimerFunc(30, DoTimer, 1);
 }
@@ -55,15 +57,15 @@ GLvoid drawScene(GLvoid)
 		glPushMatrix();
 		glTranslatef(List[i].x, List[i].y, 0.0);
 		glScalef(List[i].scale, List[i].scale, List[i].scale);
-		glRotatef(List[i].rotate, 1.0,1.0,1.0);
+		glRotatef(List[i].rotate * key_, 1.0,0.0,0.0);
 		if (List[i].shape == 1)
-			glutSolidCone(10, 10, 15, 15);
+			glutWireCone(10, 10, 15, 15);
 		if (List[i].shape == 2)
-			glutSolidCube(10);
+			glutWireCube(10);
 		if (List[i].shape == 3)
-			glutSolidSphere(10, 15, 15);
+			glutWireSphere(10, 15, 15);
 		if (List[i].shape == 4)
-			glutSolidTorus(8, 10, 15, 15);
+			glutWireTorus(8, 10, 15, 15);
 		if (List[i].shape == 5)
 			glutSolidTeapot(10);
 		List[i].rotate += 10;
@@ -87,6 +89,24 @@ GLvoid drawScene(GLvoid)
 GLvoid Reshape(int w, int h) {
 	glViewport(0, 0, w, h);
 	glOrtho(0.0, 800.0, 0.0, 600.0, -800.0, 800.0);
+}
+
+GLvoid Keyboard(unsigned char key, int x, int y) {
+
+	switch (key) {
+	case 'a':
+		key_ = 1;
+		break;
+	case 'd':
+		key_ = -1;
+		break;
+	
+
+
+	}
+	drawScene();
+
+
 }
 
 GLvoid Mouse(int button, int state, int x, int y) {

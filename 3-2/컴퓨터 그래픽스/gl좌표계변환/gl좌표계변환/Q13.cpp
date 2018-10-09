@@ -10,7 +10,7 @@ float little_y = 500.0;
 float flag = 1;
 float rotate;
 int scale = 0;
-int scale_ = 0;
+float scale_ = 1;
 
 
 
@@ -64,15 +64,29 @@ void DoTimer(int value) {
 	glutPostRedisplay();
 	glutTimerFunc(30, DoTimer, 1);
 }
-
+int rotate_s = 0;
 //윈도우 출력함수
 GLvoid drawScene(GLvoid)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
+
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glLoadIdentity();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-1, 0);
+	glVertex2f(1, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(0, 1);
+	glVertex2f(0, -1);
+	glEnd();
+	glPopMatrix();
+
 	if (rotate != 0) {
 		glTranslatef(400, 0.0, 0.0);
-		glRotatef(rotate, 0.0, 1.0, 0.0);
+		glRotatef(rotate_s*-1, 0.0, 1.0, 0.0);
 		glTranslatef(-400, 0.0, 0.0);
 	}
 
@@ -87,6 +101,13 @@ GLvoid drawScene(GLvoid)
 		glTranslatef(-400, -300.0, 0.0);
 	}
 
+	if (rotate != 0) {
+		rotate_s += rotate;
+		glTranslatef(400, 0.0, 0.0);
+		glRotatef(rotate_s, 0.0, 1.0, 0.0);
+		glTranslatef(-400, 0.0, 0.0);
+	}
+
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(400, 500);
@@ -96,12 +117,11 @@ GLvoid drawScene(GLvoid)
 
 	glPushMatrix();
 		glTranslatef(little_x, little_y, 0.0);
+		if (rotate != 0)
+			glRotatef(-1 * (little_rotate - 5), 0.0, 1.0, 0.0);
+		glScalef(scale_, scale_, 1.0);
 		if(rotate != 0)
 			glRotatef(little_rotate, 0.0, 1.0, 0.0);
-		if (scale_ > 0)
-			glScalef(0.7, 0.7, 1.0);
-		if (scale_ < 0)
-			glScalef(1.2, 1.2, 1.0);
 		glBegin(GL_TRIANGLES);
 		glVertex2f(0.0, 0.0 + 10);
 		glVertex2f(0.0 + 15, 0.0 - 10);
@@ -125,11 +145,10 @@ GLvoid drawScene(GLvoid)
 		glPushMatrix();
 			glTranslatef(little_x, little_y, 0.0);
 			if (rotate != 0)
+				glRotatef(-1 * (little_rotate - 5), 0.0, 1.0, 0.0);
+			glScalef(scale_, scale_, 1.0);
+			if (rotate != 0)
 				glRotatef(little_rotate, 0.0, 1.0, 0.0);
-			if (scale_ > 0)
-				glScalef(0.7, 0.7, 1.0);
-			if (scale_ < 0)
-				glScalef(1.2, 1.2, 1.0);
 			glBegin(GL_TRIANGLES);
 			glVertex2f(0.0, 0.0 + 10);
 			glVertex2f(0.0 + 15, 0.0 - 10);
@@ -137,6 +156,7 @@ GLvoid drawScene(GLvoid)
 			glEnd();
 			if (little_rotate > 360)
 				little_rotate = 0;
+		glPopMatrix();
 		glPopMatrix();
 
 		if(scale != 0)
@@ -163,11 +183,11 @@ GLvoid Keyboard(unsigned char key, int x, int y) {
 		break;
 	case 's':
 		scale = 5;
-		scale_ = scale;
+		scale_ *= 5.0/6.0;
 		break;
 	case 'S':
 		scale = -5;
-		scale_ = scale;
+		scale_ *= 10.0/7.0;
 		break;
 	
 	
