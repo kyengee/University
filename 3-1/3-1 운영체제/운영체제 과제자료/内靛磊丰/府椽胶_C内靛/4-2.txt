@@ -1,0 +1,26 @@
+/* addcall.c  */
+#include <linux/kernel.h>
+#include <asm/uaccess.h>
+
+asmlinkage int sys_addcall(int x, int y, int *result){
+        int sum;
+        sum = x + y;
+        put_user( sum, result ); 
+        return (0);
+}
+--------------------------------------------------------------------
+/* myapp3.c */
+#include <linux/unistd.h>
+#include <errno.h>
+
+_syscall3(int, addcall, int, x, int, y, int*, result)
+
+int main()
+{
+        int i, x, y, add_result;
+        printf("input : ");
+        scanf("%d %d",&x, &y);
+        i = addcall(x, y, &add_result);
+        printf("Result : %d + %d = %d \n", x, y, add_result);
+}
+

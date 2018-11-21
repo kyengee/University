@@ -1,0 +1,8 @@
+#!/bin/bash 
+# FILE: forLoop.sh
+for num in  $1 
+do 
+	echo $num 
+done
+
+echo ===================

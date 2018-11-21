@@ -1,0 +1,10 @@
+from bg import background
+
+bg.py파일의 backgroung클래스를 임포트
+
+mag는 확대
+
+clamp(0,x,100) 0과100사이의 x
+
+*(x,y) = x,y
+

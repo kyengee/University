@@ -108,3 +108,37 @@ open_canvas()
 모듈 파이썬의 정의와 문장을 담고있는 파일
 임포트 하면 하나의 객체(싱글톤):하나의 클래스 하나의 객체
  state 조건과 종류 중간고사
+
+state 의 exit()에서 메모리를 free안하면
+다시 왔을때 사용가능한가?
+
+scipy 임포트 과학계산관련 모듈
+numpy 파이썬 라이브러리
+
+json 자바스크립트에서 쓰는 텍스트 형식 표준
+{} 객체 []array
+딕셔너리와 json json은 문자열
+딕셔너리의 for roof
+json.Loads 스트링
+json.Load 파일
+
+funcs() 함수를 저장
+
+clip_composite_draw 각도
+clamp(1,x,300) 1과300사이의 값이 x
+
+상태변화 -> 이벤트로부터
+상태 다이어그램 -> 상태변화를 화살표로
+
+json & jsp trailing comma
+마지막에 콤마를 붙여도 되는가? json은 허락하지 않는다.
+json은 {hello:"world"} 안된다(키값으로 문자열) jsp에서는 된다
+
+중간고사: oop 용어들, 상속, 인캡슐레이션 오리너구리, colimofizon?
+concept type class
+variable
+파이썬
+dictionary, array, json
+drawnow, draw 왜 두개가있는지
+if와 for의 위치
+모듈임포트, 터틀그래픽스(빈칸채우기) 15문제안팎

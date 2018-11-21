@@ -1,0 +1,3 @@
+#include<stdio.h>
+voidfunc3() { printf(Hellofunc3\n); }
+

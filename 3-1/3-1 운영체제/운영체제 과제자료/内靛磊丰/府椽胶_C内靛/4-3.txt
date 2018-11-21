@@ -1,0 +1,28 @@
+/* hellomodule.c */
+
+#define MODULE
+#include <linux/module.h>
+#include <linux/kernel.h>
+
+int init_module() {
+    printk( "Module init \n" );
+    printk( "Hello Linux Module! \n" );
+    return 0;
+}
+void cleanup_module() 
+{
+    printk( "Module Cleaned up \n" );
+}
+MODULE_LICENSE("GPL");
+--------------------------------------------------------------------
+<MakeFile>
+TARGET = hellomodule
+INCLUDE = -isystem /usr/src/linux-2.4.32/include
+CFLAGS = -O2 -D__KERNEL__ -DMODULE  $(INCLUDE)
+CC = gcc
+
+$ {TARGET }.o: $ {TARGET }.c
+
+clean :
+        rm -rf $ {TARGET }.o
+

@@ -1,1 +1,4 @@
-﻿  glut_test.vcxproj -> C:\Users\enjcat\Desktop\3-2\컴퓨터 그래픽스\glut_test\Debug\glut_test.exe
+﻿Q8.obj : error LNK2005: "void __cdecl Reshape(int,int)" (?Reshape@@YAXHH@Z)이(가) Q1.obj에 이미 정의되어 있습니다.
+Q8.obj : error LNK2005: "void __cdecl drawScene(void)" (?drawScene@@YAXXZ)이(가) Q1.obj에 이미 정의되어 있습니다.
+Q8.obj : error LNK2005: _main이(가) Q1.obj에 이미 정의되어 있습니다.
+C:\Users\enjcat\Desktop\3-2\컴퓨터 그래픽스\glut_test\Debug\glut_test.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.

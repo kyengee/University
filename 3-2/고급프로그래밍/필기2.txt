@@ -51,4 +51,93 @@ printf(스레드세이프x), fprintf(스레드세이프)
 
 segmentation 덤프같은거 생기면 core 파일에 로그 남음
 
+코드 더럽게 써라 백업 다해놔라
+
 확장자 규칙 재정의때 $?대신 $< (.SUFFIXES)
+
+$$(변수명) = 쉘 매크로 (쉘 변수나, 쉘 스크립트 사용시
+
+분산 디렉터리파일들의 make수행
+재귀적 make 사용!
+
+#ifdef
+#if  전처리기
+
+if c언어
+
+ifeq
+if   쉘 스크립트
+
+쉘 함수
+
+1.경로지정에의한분산make 방법수행 
+2.vpath방법에의한make 수행 
+3.shell script 방법에의한make 수행
+비교
+
+버전관리 commit = check in
+
+Branch 새롭게 릴리즈된 버전 (한국어 branch, 중국어 branch)
+
+운영체제 block-device 부를때까지 멈춰있는 상태
+
+Non-blocking device 하는법 select
+
+파일구성요소 inode
+
+일반파일 특수파일(장치들, network도 파일), 디렉토리파일
+
+리다이렉션
+
+blocking 다시한번 볼것
+
+select()배운거같은데?? 네트워크 프로그래밍에서
+
+
+printf
+fprintf(파일)
+sprintf(스트림)
+
+readbinary 뜻
+
+... 오퍼레이터 (항상 const char와 같이 와야한다
+
+format -> create
+파일시스템 만들기 mke2fs make extension to file system
+
+che2fs 체크하는것
+
+리눅스는 항상 root file system
+
+mount는 물리적인 파일 시스템을 논리적으로 만들어주는것(접근하게 할려고)
+
+specialfile
+디바이스드라이버 종류 character special file, block special file
+
+Major and miner device numbers
+Major - device driver number
+Minor - device port number
+
+디바이스도 open을 해야한다
+
+inode 3 diskblock 7 숫자로 찾아가나 봄
+
+디렉토리 생성할때 모드권한에 따라 생성된다
+
+unlink는 디렉토리를 지우는거 (끊는게 아님!)
+
+system() 시스템콜 함수
+
+getents 함수보다 fstat을 많이쓴다
+
+real time : 즉시응답 운영체제
+리눅스같은거는 커널함수같은거 수행 중일때는
+즉시응답이 안된다.
+
+/etc/passwd 말고 etc/shadow에 비밀번호 있음
+
+시간관련된 함수들은 안정확하다
+
+주석처리하고, free메모리의 변화확인
+
+fork까지

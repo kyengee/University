@@ -1,0 +1,72 @@
+#!/bin/bash
+
+i=1
+
+
+if [[! -d ~/.junk]]
+do
+	echo "can I make .junk?"(Y/N)
+	read y
+	if [[y == Y]]
+	do
+		mkdir ~/.junk
+	else
+		echo "I can't nothing"
+		exit
+	fi
+fi
+
+
+
+
+
+
+
+
+if [[$1 == -l]]
+then
+	ls -l ~/.junk
+
+
+elif [[$1 == -a]]
+then
+	ls -a ~/.junk
+
+
+elif [[$1 == -F]]
+then
+	ls -F ~/.junk
+
+
+elif [[$1 == -p]]
+then
+	echo "do you want delete all files in .junk?"(Y/N)
+	read x
+	if [[x == Y]]
+	then
+		rmdir ~/.junk
+		mkdir ~/.junk
+		echo "remove all"
+	
+	elif [[x == N]]
+	then
+		echo "I can't nothing"
+		exit
+	else 
+
+		echo "wrong anser"
+		exit
+	fi
+
+
+
+else
+	while [[i != NULL]]
+	do
+		mv $i ~/.junk
+		i +=1	
+	done
+	
+	i -=1
+	echo "move"$i"files"
+fi

@@ -1,0 +1,87 @@
+/* mygetpid.c */
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <sys/syscall.h>
+#include <asm/uaccess.h>
+  
+#define __NR_mygetpid 257
+ 
+asmlinkage int (*saved_entry)(void);
+extern void *sys_call_table[];
+  
+struct pid_ppid {
+   int pid;
+   int ppid;
+};
+  
+asmlinkage int sys_mygetpid(struct pid_ppid *pp)
+{
+ 
+        struct pid_ppid kpp;
+  
+        kpp.pid = current->pid;
+        kpp.ppid = current->p_pptr->pid;
+        copy_to_user(pp, &kpp, sizeof(struct pid_ppid) );
+
+        return 0;
+}
+ 
+int module_start()
+{
+ 
+       saved_entry = sys_call_table[__NR_mygetpid];
+       sys_call_table[__NR_mygetpid] = sys_mygetpid;
+       return 0;
+}
+void module_end(void)
+{
+         sys_call_table[__NR_mygetpid] = saved_entry;
+}
+
+module_init(module_start);
+module_exit(module_end);
+
+MODULE_LICENSE("GPL");
+--------------------------------------------------------------------
+<MakeFile>
+TARGET = mygetpid
+INCLUDE = -isystem /usr/src/linux-2.4.32/include
+CFLAGS = -O2 -D__KERNEL__ -DMODULE  $(INCLUDE)
+CC = gcc
+
+$ {TARGET }.o: $ {TARGET }.c
+
+clean :
+        rm -rf $ {TARGET }.o
+--------------------------------------------------------------------
+<사용자 응용프로그램>
+/ *app_mygetpid.c */
+#include <linux/unistd.h>
+#include <errno.h>
+
+struct pid_ppid {
+   int pid;
+   int ppid;
+};
+
+_syscall1(int, mygetpid, struct pid_ppid*, pp)
+
+int  main()
+{
+        int i, opid;
+        struct pid_ppid pp;
+
+        opid = getpid();
+        printf( "Original getpid System call PID = %d \n", opid );
+        i = mygetpid(&pp);
+        if ( i == 0 ) {
+           printf( "My getpid System call PID = %d, PPID = %d \n",
+                        pp.pid, pp.ppid );
+        }
+        else {
+           printf ( "Error \n" );
+        }
+}
+
+
+

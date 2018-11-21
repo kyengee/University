@@ -1,0 +1,8 @@
+커맨드창 or 터미널에서 같은 디렉토리 내 서버와 클라이언트 컴파일을 한다.
+클라이언트 : javac UDPClient.java 로 컴파일하고 java UDPClient 명령으로 클라이언트 실행
+서버 : UDPEchoServer.java가 UDPServer.java의 함수들을 사용하므로 같이 컴파일한다.
+javac UDPServer.java UDPEchoServer.java 명령으로 컴파일하고 java UDPEchoServer명령으로 서버실행.
+
+실행하면 클라이언트가 서버에 접속해서 8192개의 바이트메세지를 보내고 종료한다.
+이때 출력테스트를 위해 초반4개의 보낸 메세지를 클라이언트에서 출력하고 8192개의 전송을 끝낸 후
+Complete! 메세지를 출력하고 클라이언트는 종료한다.

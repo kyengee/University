@@ -1,0 +1,34 @@
+하와이대학의 알로하 시스템
+LAN구축 local area network
+충돌무시 -> 38%
+
+슬롯을 만들자 -> 60%
+->
+CSMA /CD
+
+CD -> 충돌감지
+
+무선은 CA -> 충돌회피
+
+802.3 은 유선 랜
+
+UPnp : Control
+
+SOAP
+simple object assistant protocol 찾아보길
+
+jini havi 별로
+
+API = application programming interface
+
+SOAP GENA SSDP
+Java  RMIc -> RMI compiler
+
+Residental Gateway의 역할
+
+CPE customer가 구입한 장비
+
+OSGi OSGi!!
+
+10.30
+combolution 컴볼루션ㅋ

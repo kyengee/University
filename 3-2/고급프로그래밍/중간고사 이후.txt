@@ -1,0 +1,68 @@
+배열포인터 (*p)
+
+배열변수선언 *순번13*
+arr[32] = { [13] = 200} 
+
+구조체 변수 선언에서의 
+객체 변수 초기화{.name = "sss", .age = 18}
+
+문자열상수와 char *
+char* 에 문자열 상수 넣는것과, 동적할당을 넣는것
+
+%s 는 주소를 원하기 때문에 포인터값을 그냥 주면 됨
+
+open할때 (O_WRONLY 있으면 O_CREATE옵션 없어도 되나?) - 파일을 쓰기 용도로 i-node 테이블 생성
+
+close() - 이걸해야 다른 프로세스에서 파일접근가능
+
+배열이름은 포인터상수
+배열명 p, a 가 있을 때
+a = p 일때 a 는 포인터상수 못 넣는다
+
+10번 문제는 디렉토리 조회하는것이었다.
+
+signal = 운영체제가 프로세스에게 신호를 주는것
+ctrl + C -> 인터럽트 발생 -> 운영체제가 프로세스에게 신호를 줌
+
+sigsuspend, sigpos = 잠깐 멈추는거
+
+프로세스가 같이 일하는 경우
+정보공유, 큰 규모의 계산
+
+Producer process, Consumer process
+두 역할 다하는거 shared System
+
+프로세스와 프로세스간의공유가 가능하게 하는거
+같은 cpu에 있을때
+signal, 소켓통신, 동기화
+
+다른컴퓨터간에는
+socket통신, Hadoop
+
+시그널
+software interrupts
+예외적인 상황, kill 함수
+인터럽트 키
+
+kill()도 시그널 전달, alarm 시간관련만 전달
+
+block은 해제되면 전달됨
+
+시그널 발생 후 전달 kill 
+
+sigset 같은 시그널을 여러번 처리가능
+
+kill()다른프로세스에게 sigsend() 이것도
+
+raise() alarm() 자기자신
+
+atomic 작다
+
+mutex_lock 잠겨있으면 대기상태
+mutex_trylock 잠겨있으면 다른일 함
+
+fprintf fopen 은 버퍼에 넘긴다. 운영체제보고 하라고 시키고 다음 구역으로 넘어간다
+
+int seq : 4; 4비트만 사용
+
+source 명령어

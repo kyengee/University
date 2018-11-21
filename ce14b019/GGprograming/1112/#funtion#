@@ -1,0 +1,30 @@
+#! /bin/bash
+
+funtion add {
+
+
+
+
+
+
+
+
+
+select cmd in $@
+do
+  case $cmd in
+  +)
+  add $@
+  -)
+  subtract $@
+  *)
+  multiply $@
+  /)
+  divide $@
+
+
+
+
+  esac
+done
+

@@ -1,0 +1,6 @@
+#! /bin/bash
+
+select cmd in $@
+do 
+  echo $cmd
+done

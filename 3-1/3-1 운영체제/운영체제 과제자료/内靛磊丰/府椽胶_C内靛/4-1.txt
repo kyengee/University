@@ -1,0 +1,22 @@
+/* hellocall.c  */
+#include <linux/kernel.h>
+  
+asmlinkage int sys_hellocall()
+{
+    printk( "Hello Linux System Call! \n" );
+    return 0;
+}
+--------------------------------------------------------------------
+/* app_hellocall.c  */
+#include <linux/unistd.h>
+#include <errno.h>
+_syscall0(int, hellocall)
+
+int main()
+{
+    int i;
+    printf( "Before System Call \n");
+    i = hellocall();
+    printf( "After System Call \n");
+}
+

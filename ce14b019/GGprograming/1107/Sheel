@@ -1,0 +1,13 @@
+#! /bin/bash
+
+read first last
+
+echo $first + $last =  $(($first + $last))
+
+echo $first - $last = $(($first - $last))
+
+echo $first \* $last = $(($first * $last))
+
+echo $first / $last = $(($first / $last))
+
+
