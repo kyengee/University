@@ -1,0 +1,14 @@
+ private void OnTriggerEnter2D(Collider2D other)
+    {
+        Inventory.instance.Add(other.gameObject);
+    }
+
+현재 아이템 갯수 Inventory.instance.current_count
+
+현재 장착한 아이템의 아이템코드
+
+Inventory.instance.equipment_Head.GetComponent<Item_string>();
+Inventory.instance.equipment_weapon.GetComponent<Item_string>();
+Inventory.instance.equipment_Shield.GetComponent<Item_string>();
+Inventory.instance.equipment_Armor.GetComponent<Item_string>();
+Inventory.instance.equipment_Shoes.GetComponent<Item_string>();

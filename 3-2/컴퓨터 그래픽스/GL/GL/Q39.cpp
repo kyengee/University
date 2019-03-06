@@ -1,0 +1,396 @@
+#include <gl/glut.h>
+#include <gl/freeglut.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
+float pi = 3.141592;
+
+GLvoid drawScene(GLvoid);
+GLvoid Reshape(int w, int h);
+GLvoid Mouse(int button, int state, int x, int y);
+GLvoid Keyboard(unsigned char key, int x, int y);
+
+void DoTimer(int value);
+
+
+void main(int argc, char *argv[])
+{
+	//초기화함수들
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(500, 500);
+	glutCreateWindow("Example");
+	glutDisplayFunc(drawScene);
+	glutReshapeFunc(Reshape);
+	glutMouseFunc(Mouse);
+	glutKeyboardFunc(Keyboard);
+	glutTimerFunc(30, DoTimer, 1);
+	glutMainLoop();
+
+}
+
+int x_ = 45, y_ = 30, Z_ = 0;
+int moon = 0;
+bool Enable1 = false, Enable2 = false;
+int Rotate_ = 0, autoRotate_ = 0;
+float Diffuse_light = 0;
+float Specular_light = 0;
+float Ambient_light = 0;
+int test = 0;
+int modee = 1;
+int normal = 0;
+GLfloat ambientLight[] = { 0.1f, 0.1f, 0.1f, 1.0f };
+GLfloat DiffuseLight[] = { 0.6f, 0.6f, 0.6f, 1.0f };
+GLfloat SpecularLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+GLfloat ambientLight1[] = { 0.1f, 0.0f, 0.0f, 1.1f };
+GLfloat DiffuseLight1[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+GLfloat SpecularLight1[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat lightPos1[] = { -500.0, 500.0, 0.0,1.0 };
+
+GLfloat ambientLight2[] = { 0.0f, 0.0f, 0.1f, 1.1f };
+GLfloat DiffuseLight2[] = { 0.0f, 0.0f, 1.0f, 1.0f };
+GLfloat SpecularLight2[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat lightPos2[] = { 500.0, 500.0, 0.0,1.0 };
+
+GLfloat fog_color[4] = { 0.7, 0.7, 0.7, 1.0 }; 
+GLfloat density = 0.0; 
+GLfloat start = 100.0; 
+GLfloat end = 200.0;
+
+
+void DoTimer(int value)
+
+{
+	moon = (moon >= 360 ? 0 : moon + 3);
+	if (Diffuse_light == 1) {
+		DiffuseLight1[0] += 0.05f;
+		DiffuseLight2[2] += 0.05f;
+		Diffuse_light = 0;
+	}
+	if (Diffuse_light == -1) {
+		DiffuseLight1[0] -= 0.05f;
+		DiffuseLight2[2] -= 0.05f;
+		Diffuse_light = 0;
+	}
+	if (Specular_light == 1) {
+		for (int i = 0; i < 3; i++) {
+			SpecularLight1[i] += 0.05f;
+			SpecularLight2[i] += 0.05f;
+		}
+		Specular_light = 0;
+	}
+	if (Specular_light == -1) {
+		for (int i = 0; i < 3; i++) {
+			SpecularLight1[i] -= 0.05f;
+			SpecularLight2[i] -= 0.05f;
+		}
+		Specular_light = 0;
+	}
+	if (Ambient_light == 1) {
+		for (int i = 0; i < 3; i++) {
+			ambientLight1[i] += 0.05f;
+			ambientLight2[i] += 0.05f;
+		}
+		Ambient_light = 0;
+	}
+	if (Ambient_light == -1) {
+		for (int i = 0; i < 3; i++) {
+			ambientLight1[i] -= 0.05f;
+			ambientLight2[i] -= 0.05f;
+		}
+		Ambient_light = 0;
+	}
+	if (Rotate_ >= 360)
+		Rotate_ = 0;
+	if (autoRotate_ >= 360)
+		autoRotate_ = 0;
+
+	glutTimerFunc(30, DoTimer, 1);
+	glutPostRedisplay();
+}
+
+GLvoid drawScene(GLvoid)
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_DEPTH_TEST);
+	glMatrixMode(GL_MODELVIEW);
+	glEnable(GL_CULL_FACE);
+	glShadeModel(GL_SMOOTH);
+	glEnable(GL_LIGHTING);
+	glFrontFace(GL_CCW);
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight1);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, DiffuseLight1);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, SpecularLight1);
+
+
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambientLight2);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, DiffuseLight2);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, SpecularLight2);
+
+	glEnable(GL_COLOR_MATERIAL);
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambientLight);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, DiffuseLight);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, SpecularLight);
+	glMateriali(GL_FRONT_AND_BACK, GL_SHININESS, 64);
+
+	glPushMatrix();
+	gluLookAt((1000 + Z_)*cos(y_ / 180.0*pi)*cos(x_ / 180.0*pi), (1000 + Z_)*sin(y_ / 180.0*pi), (1000 + Z_)*cos(y_ / 180.0*pi)*sin(x_ / 180.0*pi), 0.0, 0.0, -1.0, 0.0, 1.0, 0.0);
+
+	
+	if (modee == 1)
+		glFogf(GL_FOG_MODE, GL_LINEAR);
+	if (modee == -1) {
+		glFogf(GL_FOG_MODE, GL_EXP);
+		if (test > 0) {
+			glFogf(GL_FOG_DENSITY, 0.1); // fog mode가 GL_EXP, GL_EXP2일 경우 밀도의 설정이 가능
+			test--;
+		}
+		if (test < 0) {
+			glFogf(GL_FOG_DENSITY, 0.0); // fog mode가 GL_EXP, GL_EXP2일 경우 밀도의 설정이 가능
+			test++;
+		}
+	}
+
+	glFogfv(GL_FOG_COLOR, fog_color); // fog_color는 안개의 색을 의미한다. 
+	glHint(GL_FOG_HINT, GL_NICEST);
+	glFogf(GL_FOG_START, start); // start는 world coordinate상에서 안개 시작 위치를 의미한다. 
+	glFogf(GL_FOG_END, end); // end는 world coordinate상에서 안개 끝 위치를 의미한다.
+	glEnable(GL_FOG);
+
+
+	glPushMatrix();
+	glScalef(100, 1, 100);
+	glutSolidCube(10);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0, 180, 0);
+	for (int i = 0; i < 4; i++) {
+		glPushMatrix();
+		glRotatef(90 * (i + 1), 0, 1, 0);
+		glRotatef(30, 1, 0, 0);
+		glBegin(GL_TRIANGLES);
+		if (normal == 1)glNormal3f(0.0, 1.0, 0.0);
+		else glNormal3f(0.0, -1.0, 0.0);
+		glVertex2f(0, 0);
+		glVertex2f(100, -200);
+		glVertex2f(-100, -200);
+		glEnd();
+		glPopMatrix();
+	}
+
+	for (int i = 0; i < 4; i++) {
+		glPushMatrix();
+		glTranslatef(400, 0, 400);
+		glRotatef(90 * (i + 1), 0, 1, 0);
+		glRotatef(30, 1, 0, 0);
+		glBegin(GL_TRIANGLES);
+		glVertex2f(0, 0);
+		glVertex2f(100, -200);
+		glVertex2f(-100, -200);
+		glEnd();
+		glPopMatrix();
+	}
+	for (int i = 0; i < 4; i++) {
+		glPushMatrix();
+		glTranslatef(-400, 0, 400);
+		glRotatef(90 * (i + 1), 0, 1, 0);
+		glRotatef(30, 1, 0, 0);
+		glBegin(GL_TRIANGLES);
+		glVertex2f(0, 0);
+		glVertex2f(100, -200);
+		glVertex2f(-100, -200);
+		glEnd();
+		glPopMatrix();
+	}
+	for (int i = 0; i < 4; i++) {
+		glPushMatrix();
+		glTranslatef(400, 0, -400);
+		glRotatef(90 * (i + 1), 0, 1, 0);
+		glRotatef(30, 1, 0, 0);
+		glBegin(GL_TRIANGLES);
+		glVertex2f(0, 0);
+		glVertex2f(100, -200);
+		glVertex2f(-100, -200);
+		glEnd();
+		glPopMatrix();
+	}
+	for (int i = 0; i < 4; i++) {
+		glPushMatrix();
+		glTranslatef(-400, 0, -400);
+		glRotatef(90 * (i + 1), 0, 1, 0);
+		glRotatef(30, 1, 0, 0);
+		glBegin(GL_TRIANGLES);
+		glVertex2f(0, 0);
+		glVertex2f(100, -200);
+		glVertex2f(-100, -200);
+		glEnd();
+		glPopMatrix();
+	}
+
+	glTranslatef(0, 100, 0);
+	glRotatef(moon, 0, 1, 0);
+	glTranslatef(100, 0, 0);
+	glutSolidSphere(100, 40, 40);
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+	glRotatef(Rotate_ + autoRotate_, 0, 1, 0);
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos1);
+	glLightfv(GL_LIGHT1, GL_POSITION, lightPos2);
+	glTranslatef(500.0, 500.0, 0.0);
+	glutSolidCone(5, 10, 15, 15);
+	glTranslatef(-1000.0, 0.0, 0.0);
+	glutSolidCone(5, 10, 15, 15);
+
+	if (Enable1 == true)
+		glEnable(GL_LIGHT0);
+	else
+		glDisable(GL_LIGHT0);
+	if (Enable2 == true)
+		glEnable(GL_LIGHT1);
+	else
+		glDisable(GL_LIGHT1);
+	glPopMatrix();
+
+
+
+
+
+
+	glPopMatrix();
+
+	glutSwapBuffers();
+}
+
+GLvoid Reshape(int w, int h) {
+	glViewport(0, 0, w, h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(60.0, 1.0, 1.0, 2000.0);
+	glMatrixMode(GL_MODELVIEW);
+}
+
+GLvoid Keyboard(unsigned char key, int x, int y) {
+
+	switch (key) {
+		//GLfloat fog_color[4] = { 0.7, 0.7, 0.7, 1.0 };
+	//GLfloat density = 0.7;
+	//GLfloat start = 10.0;
+	//GLfloat end = 50.0;
+	case '6':
+		test++;
+		break;
+	case '^':
+		test--;
+		break;
+	case '4':
+		start += 10.0;
+		break;
+	case '$':
+		start -= 10.0;
+		break;
+	case '5':
+		end += 50.0;
+		break;
+	case '%':
+		end -= 50.0;
+		break;
+	case 'm':
+		modee *= -1;
+		break;
+
+	case 'a':
+		x_--;
+		break;
+	case 'd':
+		x_++;
+		break;
+	case 'w':
+		y_++;
+		break;
+	case 's':
+		y_--;
+		break;
+
+
+	case '+':
+		Z_ += 5;
+		break;
+	case '=':
+		Z_ -= 5;
+		break;
+
+	case '1':
+		Enable1 = (Enable1 == true ? false : true);
+		break;
+
+	case '2':
+		Enable2 = (Enable2 == true ? false : true);
+		break;
+
+	case'y':
+		Rotate_--;
+		break;
+	case'Y':
+		Rotate_++;
+		break;
+
+	case'u':
+		autoRotate_ = 1;
+		break;
+
+	case'U':
+		autoRotate_ = 0;
+		break;
+
+	case 'g':
+		Ambient_light++;
+		break;
+	case 'G':
+		Ambient_light--;
+		break;
+	case'h':
+		Diffuse_light++;
+		break;
+	case'H':
+		Diffuse_light--;
+		break;
+	case'j':
+		Specular_light++;
+		break;
+	case'J':
+		Specular_light--;
+		break;
+	case'o':
+		normal = 1;
+		break;
+	case'O':
+		normal = 0;
+		break;
+
+
+
+
+	}
+	glutPostRedisplay();
+
+
+}
+
+GLvoid Mouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+
+	}
+
+
+
+}
+
+

@@ -1,0 +1,823 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <gl/glut.h>
+#include <gl/freeglut.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
+#include <windows.h>
+float pi = 3.141592;
+
+GLvoid drawScene(GLvoid);
+GLvoid Reshape(int w, int h);
+GLvoid Mouse(int button, int state, int x, int y);
+GLvoid Keyboard(unsigned char key, int x, int y);
+void Draw_RunningMachine();
+void Draw_IronBar();
+void Draw_Pushup();
+void Draw_Tree();
+void Draw_Airplane();
+void Draw_Box();
+GLubyte * LoadDIBitmap(const char *filename, BITMAPINFO **info);
+
+
+void DoTimer(int value);
+
+int Red_Box = 0;
+int Red_Box_Dr = 1;
+int Red_Box_Y = 0;
+int Green_Box_X = 0;
+int Green_Box_Y = 0;
+int Blue_Box_X = 0;
+int Blue_Box_Z = 0;
+
+void main(int argc, char *argv[])
+{
+	//초기화함수들
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(500, 500);
+	glutCreateWindow("Example");
+	glutDisplayFunc(drawScene);
+	glutReshapeFunc(Reshape);
+	glutMouseFunc(Mouse);
+	glutKeyboardFunc(Keyboard);
+	glutTimerFunc(30, DoTimer, 1);
+	glutMainLoop();
+
+}
+int TreeScale = 100;
+float TreeFlag = 1;
+int x_ = -45, y_ = 30, Z_ = 0;
+int armDG = 0;
+int armFlag = 1;
+int NectDG = 0;
+int RunningMC = 0;
+int RunningDG = 0;
+int RunningFlag = 5;
+int Propel = 0;
+int smoge = 0;
+int smogeflag = 1;
+int AirDG = 0;
+int moveX = 0;
+int moveZ = 0;
+bool moveFlag = false;
+int SphereX = 0;
+int SphereFlagX = 1;
+int SphereZ = 0;
+int SphereFlagZ = 0;
+int Sphere_pX = 0;
+int Sphere_pZ = 0;
+int UP_DG = 0;
+int UP_DG_flag = -3;
+int FRONT_DG = 0;
+int FRONT_DG_flag = -3;
+int SPRING = 0;
+float SPRING_flag = 0.1;
+float One_DG = 0;
+bool isFlat = true;
+
+
+
+void DoTimer(int value)
+
+{
+	UP_DG += UP_DG_flag;
+	UP_DG = (UP_DG > 90 ? 90 : (UP_DG < 0 ? 0 : UP_DG));
+	SPRING_flag = (UP_DG_flag == 3 ? (SPRING_flag >= 1.0 ? 1.0 : SPRING_flag * 1.2) : (SPRING_flag <= 0.15 ? 0.1 : SPRING_flag * 0.9));
+	One_DG = (FRONT_DG_flag == 3 ? (One_DG >= 300 ? 300 : One_DG + 10) : (One_DG <= 0 ? 0 : One_DG - 10));
+	FRONT_DG += FRONT_DG_flag;
+	FRONT_DG = (FRONT_DG > 90 ? 90 : (FRONT_DG < 0 ? 0 : FRONT_DG));
+
+	glutTimerFunc(30, DoTimer, 1);
+	glutPostRedisplay();
+}
+GLuint texture_object[6];
+GLubyte *pBytes; // 데이터를 가리킬 포인터 
+BITMAPINFO *info; // 비트맵 헤더 저장할 변수
+bool init = false;
+
+
+GLvoid drawScene(GLvoid)
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+			glEnable(GL_DEPTH_TEST);
+			glEnable(GL_CULL_FACE);
+			//glShadeModel(GL_SMOOTH);
+
+			if (init == false) {
+				glGenTextures(6, texture_object);
+				glBindTexture(GL_TEXTURE_2D, texture_object[0]);
+				pBytes = LoadDIBitmap("./1.bmp", &info);
+				glTexImage2D(GL_TEXTURE_2D, 0, 3, 191, 192, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				glBindTexture(GL_TEXTURE_2D, texture_object[1]);
+				pBytes = LoadDIBitmap("./2.bmp", &info);
+				glTexImage2D(GL_TEXTURE_2D, 0, 3, 189, 192, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				glBindTexture(GL_TEXTURE_2D, texture_object[2]);
+				pBytes = LoadDIBitmap("./3.bmp", &info);
+				glTexImage2D(GL_TEXTURE_2D, 0, 3, 189, 193, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				glBindTexture(GL_TEXTURE_2D, texture_object[3]);
+				pBytes = LoadDIBitmap("./4.bmp", &info);
+				glTexImage2D(GL_TEXTURE_2D, 0, 3, 191, 195, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				glBindTexture(GL_TEXTURE_2D, texture_object[4]);
+				pBytes = LoadDIBitmap("./5.bmp", &info);
+				glTexImage2D(GL_TEXTURE_2D, 0, 3, 191, 192, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				glBindTexture(GL_TEXTURE_2D, texture_object[5]);
+				pBytes = LoadDIBitmap("./6.bmp", &info);
+				glTexImage2D(GL_TEXTURE_2D, 0, 3, 191, 195, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+				glEnable(GL_TEXTURE_2D);
+				init = true;
+			}
+
+
+	glPushMatrix();
+	gluLookAt((1000 + Z_)*cos(y_ / 180.0*pi)*cos(x_ / 180.0*pi), (1000 + Z_)*sin(y_ / 180.0*pi), (1000 + Z_)*cos(y_ / 180.0*pi)*sin(x_ / 180.0*pi), 0.0, 0.0, -1.0, 0.0, 1.0, 0.0);
+
+
+
+	glPushMatrix();
+	glTranslatef(0, 400, 0);
+	glBindTexture(GL_TEXTURE_2D, texture_object[0]);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(200, 0, 200);
+	//glColor3f(1, 1, 1);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(200, 0, -200);
+	//glColor3f(0, 1, 1);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(-200, 0, -200);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(-200, 0, 200);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(200, 200, 0);
+	glRotatef(-90, 0, 0, 1);
+	glBindTexture(GL_TEXTURE_2D, texture_object[1]);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(200, 0, 200);
+	//glColor3f(1, 1, 1);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(200, 0, -200);
+	//glColor3f(0, 1, 1);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(-200, 0, -200);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(-200, 0, 200);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-200, 200, 0);
+	glRotatef(90, 0, 0, 1);
+	glBindTexture(GL_TEXTURE_2D, texture_object[2]);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(200, 0, 200);
+	//glColor3f(1, 1, 1);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(200, 0, -200);
+	//glColor3f(0, 1, 1);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(-200, 0, -200);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(-200, 0, 200);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, 200, -200);
+	glRotatef(-90, 1, 0, 0);
+	glBindTexture(GL_TEXTURE_2D, texture_object[3]);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(200, 0, 200);
+	//glColor3f(1, 1, 1);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(200, 0, -200);
+	//glColor3f(0, 1, 1);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(-200, 0, -200);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(-200, 0, 200);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, 200, 200);
+	glRotatef(90, 1, 0, 0);
+	glBindTexture(GL_TEXTURE_2D, texture_object[4]);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(200, 0, 200);
+	//glColor3f(1, 1, 1);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(200, 0, -200);
+	//glColor3f(0, 1, 1);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(-200, 0, -200);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(-200, 0, 200);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, 0, 0);
+	glRotatef(180, 1, 0, 0);
+	glBindTexture(GL_TEXTURE_2D, texture_object[5]);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(200, 0, 200);
+	//glColor3f(1, 1, 1);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(200, 0, -200);
+	//glColor3f(0, 1, 1);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(-200, 0, -200);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(-200, 0, 200);
+	glEnd();
+	glPopMatrix();
+	
+
+
+	glPushMatrix();
+	glColor3f(1, 1, 1);
+	glBegin(GL_LINE_STRIP);
+	while (SPRING < 360 * 5) {
+		glVertex3f(100 * cos(SPRING / 180.0*pi), SPRING*SPRING_flag, 100 * sin(SPRING / 180.0*pi));
+		SPRING++;
+	}
+	glEnd();
+	glTranslatef(0, SPRING*SPRING_flag, 0);
+	glutWireSphere(100, 15, 15);
+	SPRING = 0;
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0, 100, -One_DG);
+	glRotatef(One_DG, 1, 0, 0);
+	glutWireSphere(100, 25, 15);
+	glPopMatrix();
+
+
+
+
+	glPopMatrix();
+
+	glutSwapBuffers();
+}
+
+GLvoid Reshape(int w, int h) {
+	glViewport(0, 0, w, h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(60.0, 1.0, 1.0, 2000.0);
+	glMatrixMode(GL_MODELVIEW);
+}
+
+GLvoid Keyboard(unsigned char key, int x, int y) {
+
+	switch (key) {
+	case 'i':
+		if (glIsEnabled(GL_DEPTH_TEST)) {
+			glDisable(GL_DEPTH_TEST);
+		}
+		else
+			glEnable(GL_DEPTH_TEST);
+		break;
+	case 'o':
+		if (glIsEnabled(GL_CULL_FACE)) {
+			glDisable(GL_CULL_FACE);
+		}
+		else
+			glEnable(GL_CULL_FACE);
+		break;
+	case 'p':
+		if (isFlat == true) {
+			isFlat = false;
+			glShadeModel(GL_SMOOTH);
+		}
+		else {
+			isFlat = true;
+			glShadeModel(GL_FLAT);
+		}
+		break;
+	case 'a':
+		x_--;
+		break;
+	case 'd':
+		x_++;
+		break;
+	case 'w':
+		y_++;
+		break;
+	case 's':
+		y_--;
+		break;
+
+	case '1':
+		Red_Box_Y += 3;
+		if (Red_Box_Y > 90)
+			Red_Box_Y = 90;
+		break;
+	case '!':
+		Red_Box_Y -= 3;
+		if (Red_Box_Y < -90)
+			Red_Box_Y = -90;
+		break;
+	case '2':
+		Green_Box_X += 3;
+		if (Green_Box_X > 90)
+			Green_Box_X = 90;
+		break;
+	case '@':
+		Green_Box_X -= 3;
+		if (Green_Box_X < -90)
+			Green_Box_X = -90;
+		break;
+	case '3':
+		Green_Box_Y += 3;
+		if (Green_Box_Y > 90)
+			Green_Box_Y = 90;
+		break;
+	case '#':
+		Green_Box_Y -= 3;
+		if (Green_Box_Y < -90)
+			Green_Box_Y = -90;
+		break;
+	case '4':
+		Blue_Box_X += 3;
+		if (Blue_Box_X > 90)
+			Blue_Box_X = 90;
+		break;
+	case '$':
+		Blue_Box_X -= 3;
+		if (Blue_Box_X < -90)
+			Blue_Box_X = -90;
+		break;
+	case '5':
+		Blue_Box_Z += 3;
+		if (Blue_Box_Z > 90)
+			Blue_Box_Z = 90;
+		break;
+	case '%':
+		Blue_Box_Z -= 3;
+		if (Blue_Box_Z < -90)
+			Blue_Box_Z = -90;
+		break;
+
+	case 'l':
+		moveZ += 5;
+		moveFlag = true;
+		break;
+	case '.':
+		moveZ -= 5;
+		moveFlag = true;
+		break;
+	case ',':
+		moveX += 5;
+		break;
+	case '/':
+		moveX -= 5;
+		break;
+	case '+':
+		Z_ += 5;
+		break;
+	case '=':
+		Z_ -= 5;
+		break;
+
+	case 'z':
+		if (UP_DG_flag == 3)
+			UP_DG_flag = -3;
+		else if (UP_DG_flag == -3)
+			UP_DG_flag = +3;
+		break;
+
+	case 'x':
+		if (FRONT_DG_flag == 3)
+			FRONT_DG_flag = -3;
+		else if (FRONT_DG_flag == -3)
+			FRONT_DG_flag = +3;
+		break;
+
+
+	}
+	glutPostRedisplay();
+
+
+}
+
+GLvoid Mouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+
+	}
+
+
+
+}
+
+
+void Draw_RunningMachine() {
+	glPushMatrix();
+	glTranslatef(60, 0, 0);
+	glRotated(180, 0, 1, 0);
+	glColor3f(0.9, 0.2, 0.2);
+	glScalef(1, 1, 20);
+	for (int i = 0; i < 10; i++) {
+		glPushMatrix();
+		glTranslatef((RunningMC + i * 11) % 120, 0, 0);
+		glutSolidCube(5);
+		glPopMatrix();
+	}
+	glPopMatrix();
+	glPushMatrix();
+	glColor3f(0.9, 0, 0);
+	glTranslatef(0, 0, 50);
+	glScalef(7, 1, 1);
+	glutSolidTorus(4, 5, 15, 15);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0, 0, -50);
+	glScalef(7, 1, 1);
+	glutSolidTorus(4, 5, 15, 15);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(50, 0, 0);
+	glPushMatrix();
+	glTranslatef(0, 50, -50);
+	glScalef(1, 20, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0, 50, 50);
+	glScalef(1, 20, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 100, 0);
+	glScalef(1, 5, 20);
+	glutSolidCube(5);
+	glPopMatrix();
+	//사람
+	glPushMatrix();
+	glColor3f(0.9, 0.9, 0.2);
+	glTranslatef(0, 80, 0);
+	glScalef(3, 5, 4);
+	glutSolidCube(15);
+	glPopMatrix();
+	glTranslatef(0, 50, 0);
+	glPushMatrix();
+	glTranslated(0, 0, 20);
+	glRotatef(RunningDG, 0, 0, 1);
+	glTranslated(0, -20, 0);
+	glScalef(1, 10, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -20);
+	glRotatef(-1 * RunningDG, 0, 0, 1);
+	glTranslated(0, -20, 0);
+	glScalef(1, 10, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+}
+
+void Draw_IronBar() {
+	glPushMatrix();
+	glColor3f(0.2, 0.9, 0.2);
+	glTranslatef(0, 50, 0);
+	glPushMatrix();
+	glTranslatef(40, 0, 0);
+	glScalef(1, 10, 1);
+	glutSolidCube(10);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-40, 0, 0);
+	glScalef(1, 10, 1);
+	glutSolidCube(10);
+	glPopMatrix();
+	glTranslatef(0, 50, 0);
+	glPushMatrix();
+	glScalef(15, 1, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glColor3f(0.2, 0.2, 0.9);
+	glRotatef(NectDG, 1, 0, 0);
+	glTranslatef(0, -30, 0);
+	glPushMatrix();
+	glTranslatef(20, 0, 0);
+	glScalef(1, 20, 1);
+	glutSolidCube(3);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-20, 0, 0);
+	glScalef(1, 20, 1);
+	glutSolidCube(3);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, -20, 0);
+	glutSolidSphere(10, 15, 15);
+	glPopMatrix();
+	glTranslatef(0, -40, 0);
+	glScalef(4, 2, 2);
+	glutSolidCube(10);
+	glPopMatrix();
+}
+
+void Draw_Pushup() {
+	glPushMatrix();
+	glColor3f(0.3, 0.3, 0);
+	glTranslatef(0, 10, 0);
+	glPushMatrix();
+	glTranslatef(35, 0, 50);
+	glScalef(1, 4, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-35, 0, 50);
+	glScalef(1, 4, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(35, 0, -50);
+	glScalef(1, 4, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-35, 0, -50);
+	glScalef(1, 4, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 10, 0);
+	glPushMatrix();
+	glScalef(15, 1, 20);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 20, 0);
+
+	glPushMatrix();
+	glColor3f(0.9, 0.9, 0.9);
+	glScalef(7, 3, 15);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 0, -30);
+	glutSolidSphere(30, 15, 15);
+	glTranslatef(0, 0, 15);
+	//팔그리기
+	glPushMatrix();
+	glColor3f(0, 0.9, 0.9);
+	glTranslated(15, 0, 0);
+	glRotatef(-1 * armDG, 0, 0, 1);
+	glTranslatef(0, 10, 0);
+	glPushMatrix();
+	glScalef(1, 8, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 20, 0);
+	glRotatef(2 * armDG, 0, 0, 1);
+	glTranslatef(0, 20, 0);
+	glPushMatrix();
+	glScalef(1, 8, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 20, 0);
+	glRotated(-1 * armDG, 0, 0, 1);
+	glColor3f(1, 1, 0.2);
+	glTranslatef(-15, 0, 0);
+	glTranslatef(30, 0, 0);
+	glutSolidSphere(10, 15, 15);
+	glTranslatef(-60, 0, 0);
+	glutSolidSphere(10, 15, 15);
+	glTranslatef(30, 0, 0);
+	glScalef(20, 1, 1);
+	glutSolidCube(3);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0, 0.9, 0.9);
+	glTranslated(-15, 0, 0);
+	glRotatef(armDG, 0, 0, 1);
+	glTranslatef(0, 10, 0);
+	glPushMatrix();
+	glScalef(1, 8, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 20, 0);
+	glRotatef(-2 * armDG, 0, 0, 1);
+	glTranslatef(0, 20, 0);
+	glPushMatrix();
+	glScalef(1, 8, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glPopMatrix();
+	glPopMatrix();
+}
+
+void Draw_Tree() {
+
+	glPushMatrix();
+	glColor3f(0.2, 0.2, 0);
+	glTranslatef(0, 100, 0);
+	glScalef(1.0, 20.0, 1.0);
+	glutSolidCube(10);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0, 0.9, 0);
+	glTranslatef(0.0, 200.0, 0.0);
+	glutWireSphere(TreeScale, 15, 15);
+	glPopMatrix();
+}
+
+void Draw_Airplane() {
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRotatef(-90, 0, 1, 0);
+	glutSolidCone(30, 150, 15, 15);
+	glPushMatrix();
+	glColor3f(1, 0, 0);
+	glRotatef(Propel, 0, 0, 1);
+	glScalef(30, 5, 1);
+	glutSolidCube(5);
+	glPopMatrix();
+	glRotatef(180, 0, 1, 0);
+	glColor3f(1.0, 1.0, 1.0);
+	glutSolidCone(10, 10, 15, 15);
+	glTranslatef(0, 0, -50);
+	glPushMatrix();
+	glColor3f(0, 1.0, 1.0);
+	glScalef(50, 1, 10);
+	glutSolidCube(5);
+	glPopMatrix();
+	glTranslatef(0, 0, -90);
+	glutSolidCube(30);
+	glTranslatef(0, 0, -70);
+	glColor3f(0.5, 0.5, 0.5);
+	glutSolidSphere(40 + smoge, 15, 15);
+	glTranslatef(0, 0, -80);
+	glutSolidSphere(20 - smoge * 0.8, 15, 15);
+	glTranslatef(0, 0, -50);
+	glutSolidSphere(10 + smoge * 0.7, 15, 15);
+	glTranslatef(0, 0, -40);
+	glutSolidSphere(5 - smoge * 0.6, 15, 15);
+	glTranslatef(0, 0, -30);
+	glutSolidSphere(2 + smoge * 0.5, 15, 15);
+	glPopMatrix();
+}
+
+void Draw_Box() {
+	glPushMatrix();
+	glTranslatef(Red_Box, 0.0, 0.0);
+	glRotatef(Red_Box_Y, 0.0, 1.0, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.0, 0.0);
+	glScalef(4.0, 3.0, 3.0);
+	glutSolidCube(50);
+	glColor3f(1.0, 1.0, 1.0);
+	glutWireCube(50);
+	glPopMatrix();
+
+	glTranslatef(0.0, 50.0, 0.0);
+	glRotatef(Green_Box_Y, 0.0, 1.0, 0.0);
+	glRotatef(Green_Box_X, 1.0, 0.0, 0.0);
+	glTranslatef(0.0, 100.0, 0.0);
+	glPushMatrix();
+	glColor3f(0.0, 1.0, 0.0);
+	glScalef(1.5, 4.0, 1.5);
+	glutSolidCube(40);
+	glColor3f(1.0, 1.0, 1.0);
+	glutWireCube(40);
+	glPopMatrix();
+
+	glTranslatef(0.0, 50.0, 0.0);
+	glRotatef(Blue_Box_X, 1.0, 0.0, 0.0);
+	glRotatef(Blue_Box_Z, 0.0, 0.0, 1.0);
+	glTranslatef(0.0, 100.0, 0.0);
+	glPushMatrix();
+	glColor3f(0.0, 0.0, 1.0);
+	glScalef(0.5, 4.0, 0.5);
+	glutSolidCube(40);
+	glColor3f(1.0, 1.0, 1.0);
+	glutWireCube(40);
+	glPopMatrix();
+	glPopMatrix();
+}
+
+GLubyte * LoadDIBitmap(const char *filename, BITMAPINFO **info)
+{
+	FILE *fp;
+	GLubyte *bits;
+	int bitsize, infosize;
+	BITMAPFILEHEADER header;
+
+	// 바이너리 읽기 모드로 파일을 연다
+	if ((fopen_s(&fp, filename, "rb")) != 0)
+		return NULL;
+
+	// 비트맵 파일 헤더를 읽는다.
+	if (fread(&header, sizeof(BITMAPFILEHEADER), 1, fp) < 1) {
+		fclose(fp);
+		return NULL;
+	}
+
+	// 파일이 BMP 파일인지 확인한다.
+	if (header.bfType != 'MB') {
+		fclose(fp);
+		return NULL;
+	}
+
+	// BITMAPINFOHEADER 위치로 간다.
+	infosize = header.bfOffBits - sizeof(BITMAPFILEHEADER);
+
+	// 비트맵 이미지 데이터를 넣을 메모리 할당을 한다.
+	if ((*info = (BITMAPINFO *)malloc(infosize)) == NULL) {
+		fclose(fp);
+		exit(0);
+		return NULL;
+	}
+
+	// 비트맵 인포 헤더를 읽는다.
+	if (fread(*info, 1, infosize, fp) < (unsigned int)infosize) {
+		free(*info);
+		fclose(fp);
+		return NULL;
+	}
+
+	// 비트맵의 크기 설정
+	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0)
+		bitsize = ((*info)->bmiHeader.biWidth *
+		(*info)->bmiHeader.biBitCount + 7) / 8.0 *
+		abs((*info)->bmiHeader.biHeight);
+
+	// 비트맵의 크기만큼 메모리를 할당한다.
+	if ((bits = (unsigned char *)malloc(bitsize)) == NULL) {
+		free(*info);
+		fclose(fp);
+		return NULL;
+	}
+
+	// 비트맵 데이터를 bit(GLubyte 타입)에 저장한다.
+	if (fread(bits, 1, bitsize, fp) < (unsigned int)bitsize) {
+		free(*info); free(bits);
+		fclose(fp);
+		return NULL;
+	}
+
+	fclose(fp);
+	return bits;
+}
+
+

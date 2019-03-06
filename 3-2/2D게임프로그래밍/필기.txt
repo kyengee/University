@@ -142,3 +142,15 @@ dictionary, array, json
 drawnow, draw 왜 두개가있는지
 if와 for의 위치
 모듈임포트, 터틀그래픽스(빈칸채우기) 15문제안팎
+
+atan2는 y부터
+
+코드가 비효율적으로 사용되는것을 막음
+frame time
+game_world 제너레이터 yeild라는 키워드
+충돌체크, 스크롤
+json pickle 모듈들끼리의 상호작용
+수학함수들
+
+223호
+

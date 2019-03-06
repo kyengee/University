@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="TitleGreen">#BCF5A9</color>
+    <color name="woodin">#F5DA81</color>
+    <color name="woodout">#DBA901</color>
+    <color name="woodwhite">#FBF8EF</color>
+    <color name="water">#2EFEF7</color>
+    <color name="grow">#2EFE2E</color>
+    <color name="food">#FF00FF</color>
+</resources>

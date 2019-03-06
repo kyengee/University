@@ -1,0 +1,49 @@
+Item 클래스
+
+ public int code; 아이템코드
+ public Sprite image; 아이템 이미지
+ public Item_property property; 아이템 속성값 클래스
+  { // Item_property 클래스 안에있는 변수들
+    public string name; 아이템 이름
+    public string info; 아이템 설명
+    public int count; 아이템 갯수
+    public int buyPrice; 아이템 구입가격
+    public int sellPrice; 아이템 판매가격
+    public string tag; 아이템 tag 값 ( equipment, consume, etc 중 하나이다.)
+    public string part; part는 일단 equipment에만 적으면 되는데, (head, weapon, Armor 중 하나를 적으면 된다)
+  }
+
+
+Inventory 클래스
+일단 싱글톤, DontDestroyOnLoad 함수를 사용하였기 때문에 씬이 바뀌어도 사라지지 않는다.
+한번만 생성해주면 Inventory.instance로 접근하여 계속 사용할 수 있다.
+
+초기화 할때 대부분 오브젝트 이름으로 하기때문에 이름이바뀌면 안된다.
+
+*참고용*
+ window_show = false; // 아이템창의 On/Off를 관리한다
+ isSHOP = false; // 상점창에서 열렸는지, 그냥 열렸는지를 나타낸다(아직 사용하지 않았다.)
+ inventory_window = GameObject.Find("item_bg"); // 인벤토리창을 SetActive(true/false)하기위해 사용한다.
+ status_window = GameObject.Find("status_bg"); // 스테이터스창을 SetActive(true/false)하기위해 사용한다.
+ slots = new List<GameObject>(); // 인벤토리창의 리스트이다 (20개이다)
+ equipment_Head = GameObject.Find("equipment_Head"); // 스테이터스창의 머리슬롯
+ equipment_weapon = GameObject.Find("equipment_weapon"); // 스테이터스창의 무기슬롯
+ equipment_Armor = GameObject.Find("equipment_Armor"); // 스테이터스창의 방패슬롯
+ defaultImage = slots[0].GetComponent<Image>().sprite; // 아무것도 없는 슬롯의 그림이다.
+ current_count = 0; // 인벤토리의 아이템의 갯수를 의미한다. (1 이면 한개)
+ equipment_count = 0; // 해당태그아이템의갯수(1이면 한개)
+ consume_count = 0; // 해당태그아이템의갯수(1이면 한개)
+ etc_count = 0; // 해당태그아이템의갯수(1이면 한개)
+ inventory_window.SetActive(false); // 인벤토리창을 초기화때 꺼놓는다.
+ status_window.SetActive(false); // 스테이터스창을 초기화때 꺼놓는다.
+
+인벤토리의 update 함수에는 현재
+i 키를 누르면 활성화/비활성화와, Z(equipment에서 하나 꺼내기), X(consume에서 하나 꺼내기), 
+C(etc에서 하나 꺼내기) 의 테스트를 위한 코드가 있다.
+
+** 외부에서 인벤토리를 다루기위해 사용하는 코드는 
+Add( GameObject ) 와 pop_list( index ) 함수가 있다.
+
+Inventory.instance.Add(this.gameObject); 로 넣을 게임오브젝트를 인벤토리에 추가할수있다.
+Inventory.instance.pop_list(this.GetComponent<index>().Index);로 인벤토리에서 해당 인덱스의 아이템을 뺄수있다.
+Index는 인벤토리의 번호같은 개념이며, 인벤토리오브젝트의 스크립트로 추가가 되어있다.(1~20까지이다.)

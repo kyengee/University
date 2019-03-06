@@ -1,0 +1,27 @@
+031-497-1497
+
+
+사이드뷰 RPG
+중세시대 배경
+검사 먼저
+사이드뷰 컨셉아트
+
+캐릭터 : https://assetstore.unity.com/packages/2d/characters/2d-simple-character-swordman-133259
+배경 : https://assetstore.unity.com/packages/2d/environments/medieval-pixel-art-asset-130132
+
+탑형식
+
+스테이지마다 열쇠로클리어
+10스테이지 마다 마을
+5스테이지마다 보따리상인
+
+시간개념**
+
+맵 클리어조건
+
+마이스터테스크
+Git허브
+
+사운드 UI 그래픽, 클라이언트, 서버
+
+한달 식비 200000 한달 월세 275000 인터넷 16500 핸드폰 13000 전기 10000 가스 30000

@@ -69,5 +69,52 @@
     <ClCompile Include="Q29.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Q32.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q31.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q33.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q34.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q35.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q36.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q37.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q38.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Q39.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\4.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\5.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\6.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

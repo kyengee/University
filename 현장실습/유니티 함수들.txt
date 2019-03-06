@@ -1,0 +1,49 @@
+입력
+Input.GetAxis("Horizontal") -1 0 1
+Input.GetAxis("Vertical")
+Input.GetKeyDown(KeyCode.Space)
+Input.GetKey
+Input.GetKeyUp
+Input.touchCount >0 || Input.GetMouseButton(0)
+Input.MousePosition(좌하단=0,0)
+
+transform.localEulerAngles = new Vecter3(10,0,360)
+transform.Rotate()
+transform.position = 글로벌포지션
+transform.localPosition = 로컬포지션
+direction = transform.position - collision.gameObject.transform.position
+direction = direction.normalized * 1000;
+Getcomponont<name>()
+GetComponent<Rigiedbody>().AddForce(Vecter3.up*200)
+Vector3.Distance(first,last)
+Vector3.MoveTowards(currunt,target,움직일length)
+
+GameObject.Find("이름")
+GameObject[] = GameObject.FindGameObjectsWithTag("태그")
+배열.length
+
+자식오브젝트의 위치 = 부모오브젝트의 위치에 상대적
+
+충돌
+void OnCollisionEnter(Collision collision){
+	collision.gameObject.name
+
+}
+is trigger check
+
+void OntriggerEnter(Collider collider){
+	collider.gameObject.name
+	Application.LoadLevel("씬이름")
+	Destroy(gameObject<-자기자신);
+}
+
+GameObject.SendMessage("함수이름")
+
+using UnityEngine.UI
+
+Time.deltaTime 업데이트마다 흐른 시간
+
+인스턴스생성 Instantiate(stone, transform.position, Quaternion.identity)-이름,위치,각도
+public Text
+컴포넌트 일련번호: GetInstanceID() - 자기자신
+부모클래스의 함수 실행 base.update()
