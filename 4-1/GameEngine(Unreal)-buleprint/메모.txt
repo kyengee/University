@@ -1,1 +1,6 @@
-a
+Light baking 움직이지 않는 액터에게 그림자를 미리 그려놓는것
+
+위치변환중 end키는 아래쪽에 고정
+v키는 위쪽에 고정
+
+https://openkakao.com/o/gNXZKzhb
