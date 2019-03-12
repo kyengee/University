@@ -1,1 +1,3 @@
-a
+패턴인식
+Pattern Recognition
+Pattern Classification
