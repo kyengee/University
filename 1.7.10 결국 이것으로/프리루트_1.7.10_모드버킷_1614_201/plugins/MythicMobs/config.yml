@@ -6,7 +6,7 @@ Configuration:
   General:
     AllowMetrics: true
     CheckForUpdates: true
-    CompatibilityMode: false
+    CompatibilityMode: true
     DebugLevel: 0
     ErrorLogging: true
     UseVolatileFeatures: true
