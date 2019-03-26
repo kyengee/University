@@ -75,3 +75,13 @@ C++의 Constructor(생성자)와 유사한 기능. -객체의 모양을 잡아주는 역할
 레벨상의 엑터들끼리의 상호작용
 전역변수처럼 직접 제어가능
 빠른 테스트에 씀. 키보드,마우스 직접적으로 처리
+
+게임 플레이 프레임워크
+
+모든 객체들의 BaseClass = actor
+움직이는 객체들의 BaseClass = Pawn
+움직임과 수학적 연산
+비시각적,비물리적 상태는 Pawn이 아닌
+Player : PlayerState , NPC: AIController 에 저장
+
+Pawn은 다른 컨트롤러의 지배를 받는다
