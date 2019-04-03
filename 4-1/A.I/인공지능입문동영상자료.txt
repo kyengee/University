@@ -1,0 +1,6 @@
+전영민] [오후 12:20] 1번 머신러닝 https://www.youtube.com/watch?v=8ZxxEP5G8pA 
+[전영민] [오후 12:21] 2번 신경망 https://www.youtube.com/watch?v=0JxwXG6M2-g
+[전영민] [오후 2:15] 3번 신경망 https://www.youtube.com/watch?v=YYdZrDCfixo
+[전영민] [오후 2:33] 4번다층신경망 https://www.youtube.com/watch?v=oIRXZpaqQ6M
+[전영민] [오후 2:45] 5번 딥러닝 https://www.youtube.com/watch?v=mY-jco67NvE
+[전영민] [오후 4:22] Cross Entropy https://blog.naver.com/conceit815/221461836877
