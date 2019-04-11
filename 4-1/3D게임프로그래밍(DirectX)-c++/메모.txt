@@ -448,13 +448,29 @@ class는 구체적인 정보를 담고있다. 상속을 받을수록 많이 달라붙어서
 Com의 최상 추상화클래스 IUnknown
 
 
+__uuidof(인터페이스클래스이름) => GUID or REFID
+다 외우기 힘들기때문에
 
+스마트포인터?? Comptr
 
+DXGI => 어탭터 = 인터페이스( 그래픽 카드를 나타낸다)
 
+Factory(숫자는 버젼) 컴퓨터를 나타낸다
+SwapChain은 후면버퍼, 전면버퍼는 접근 불가능
+27, 37, 44, 77 페이지 외우기
 
+IDXGIFactory 먼저
 
+HRESULT 는 uint
+HRESULT는 반드시 에러처리를 해야한다.
 
+DESC 디스크립션 구조체
+설명하는 구조체
 
+Direct3D 디바이스는 상태기계이다.
+모든 객체들이 state를 가지고 있다.
+
+Lendering = state & draw
 
 
 
