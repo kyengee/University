@@ -131,9 +131,7 @@ prosterm (절두체)사각뿔 중 너무 가까운것은 띄우지 않는다.
 카메라 좌표변환 카메라의 월드좌표를 원점으로 바꾸기 위해
 모든 오브젝트와 같이 움직여버린다.
 
-평행이동 먼저, 회전 그 다음
-
-실수3개 회전에서 짐벌란??
+실수3개 회전에서 짐벌락
 실수9개(행렬) 에서는 문제가 생기지 않는다 
 실수4개 쿼터니언
 
@@ -471,6 +469,88 @@ Direct3D 디바이스는 상태기계이다.
 모든 객체들이 state를 가지고 있다.
 
 Lendering = state & draw
+-> present
+swap chain이 있어야 한다. (함수는 모조리 후면버퍼관련)
+전면버퍼와 후면버퍼의 리스트
+
+Setname 함수는 디버깅에서 유용하다.
+
+D3D12 - 글로벌함수라는 표시
+
+Adapter - D3D관점에서는 Device
+DXGI 관점에서는 Adapter
+
+그래픽카드 하드웨어를 만들때
+D3D 어느버전까지 지원할 수 있는지 정한다.
+
+WarpAdapter-윈도우가 지원하는 software adapter
+FrameRate가 떨어질 수 있다.
+그래픽카드가 D3D12를 부분적으로만 지원하고
+나머지는 WARP로 소프트웨어적인 지원을 
+받아서 구현이 가능할 수 있다.
+
+COM Device ChildObject 를 만드는
+Create...
+
+D3D12 커맨트 큐를 만들면 swapchain을 만들 수 있다.
+
+1. DXGI
+2.D3D12 Device
+3.swapchain
+4.getBuffer
+
+mode -> MODE(화면출력 해상도의 종류)였다.
+지금은 후면버퍼의 출력형식
+
+Usage
+D3D는 cpu -> cpu가 gpu에 접근 관련
+
+DXGI_RATIONAL 유리수 표현
+분수를 표현하기 위함
+
+UNSPECIFIED 를 사용하면 자동적으로 
+PROGRESSIVE 하게 가장 알맞은
+
+픽셀에 점을 찍으려면 픽셀의 형식을 알아야 한다.
+133개의 format
+TYPELESS는 정해놓지 않는것
+32중 S8X24 24는 무시
+
+다중 샘플링
+샘플링( 픽셀 집합에서 원하는 픽셀을 가져옴)
+필터링( 픽셀들로 연산[거른다], 평균)
+
+SuperSampling 4배 크게 그린다. 픽셀4배X 픽셀4개O
+4개를 하나로 만든다.랜더링 시간이 4배
+그래픽 XX?가 지원을 해야한다 라이브러리? 카드?
+
+MultiSampling 
+
+
+enumeration
+은 꼭 그 데이터 타입이어야 하지만
+
+UINT는 그렇지 않다.
+or 로 여러개의 옵션을 지정 할 수 있다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
