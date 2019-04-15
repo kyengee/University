@@ -3,6 +3,9 @@
 4월 1일 11-12교시
 4월 5일 10-11교시
 
+4월 18 22 25 수업없음
+29일 부터 시험시작
+
 게임프로그래밍은 일반적인 프로그래밍(문제가 주어지는)과 달리
 문제를 만들어내고 문제를 규정하는데 이 과정을 게임기획이라고 한다.
 
@@ -532,6 +535,56 @@ enumeration
 
 UINT는 그렇지 않다.
 or 로 여러개의 옵션을 지정 할 수 있다.
+
+Resize Target - 윈도우모드일때 윈도우의 크기를 변경
+전체화면일때 컴퓨터의 해상도를 변경
+
+DXGI_SWAP_CHAIN_FLAG
+의 DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH
+필요
+
+DXGI의 후면버퍼 = D3D RenderTarget
+비디오메모리를 나타내는 인터페이스 = ID3D12Resource
+Texture도 있을 수 있음
+
+UINT 는 oring 가능
+
+수직회귀 - 모니터가 전면버퍼의 데이터를 모두 출력할때
+이때 present 하면 좋다
+
+플립모델은 참고
+
+클라이언트의 윈도우크기가 바뀌면 wn_size메세지 발생
+
+윈도우크기가 바뀌면 버퍼를 바꾸는것이 아니라
+전체화면에 갈때 후면버퍼의 크기는 안바뀌고 바탕화면의 크기를 바꾼다.
+
+명령큐, 명령 리스트
+ExecuteCommandList -> 실행이 아니라 Push
+
+Set&Draw
+
+큐가 있지않은 Resource는 cpu와 gpu간의 동기화가 필요하다.
+
+offline - Frame에 구애받지 않는
+D3D 디바이스의 멤버함수를 사용하는 영역
+create()
+
+online - Frame(): Set&Draw
+사용자 입력처리, 애니메이션, 렌더
+
+CPU/GPU 동기화
+
+
+
+
+
+
+
+
+
+
+
 
 
 
