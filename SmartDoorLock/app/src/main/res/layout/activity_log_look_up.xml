@@ -7,18 +7,16 @@
     tools:context=".LogLookUp">
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
+        android:id="@+id/Start"
+        android:layout_width="377dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,67 +24,38 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginLeft="39dp"
         android:text="~"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintBottom_toTopOf="@+id/End"
+        app:layout_constraintStart_toStartOf="@+id/LogSearch"
+        app:layout_constraintTop_toBottomOf="@+id/Start" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
+        android:id="@+id/End"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintEnd_toStartOf="@+id/editText5"
+        app:layout_constraintBottom_toTopOf="@+id/LogSearch"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="53dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/editText5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/LogSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/End" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -96,11 +65,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button">
+        app:layout_constraintTop_toBottomOf="@+id/LogSearch">
 
         <LinearLayout
             android:layout_width="match_parent"
