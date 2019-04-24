@@ -8,15 +8,18 @@
 
     <EditText
         android:id="@+id/Start"
-        android:layout_width="377dp"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:gravity="center"
+        android:focusable="false"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,57 +27,71 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginLeft="39dp"
+        android:layout_marginBottom="16dp"
         android:text="~"
-        app:layout_constraintBottom_toTopOf="@+id/End"
-        app:layout_constraintStart_toStartOf="@+id/LogSearch"
-        app:layout_constraintTop_toBottomOf="@+id/Start" />
+        app:layout_constraintBottom_toTopOf="@+id/LogSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/End"
-        android:layout_width="0dp"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/LogSearch"
+        android:gravity="center"
+        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/LogSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="조 회"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/ScrollView"
         app:layout_constraintTop_toBottomOf="@+id/End" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/ScrollView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="616dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogSearch">
+        app:layout_constraintTop_toBottomOf="@+id/LogSearch"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
+            android:id="@+id/Loglayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"></LinearLayout>
     </ScrollView>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </android.support.constraint.ConstraintLayout>
