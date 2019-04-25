@@ -1,0 +1,75 @@
+파이썬 
+
+**은 제곱(우선순위 곱셈보다 높음
+// 정수의 나눗셈
+%은 실수까지 가능
+
+c 언어는 strict타입의 언어이지만
+파이썬은 한 변수로 모든걸 가능
+
+True False 대문자 사용
+
+inclusive exclusive
+포함      비포함
+ 
+
+name[ start : stop : step ]
+step = [::2] 두칸씩 띄면서 출력
+[::-1] 역으로 출력
+
+
+OOP특성 : List가 아닌거에는 append를 쓸수없지만 List이면 쓸수있다.
+List.append
+
+Slice string, list같은 collection타입에 다 쓸 수 있다.
+
+Dictionary
+키와 value의 조합을 저장
+
+del 은 메모리에서 완전히 삭제하는것
+del a
+del score['momo']
+
+키가 존재하는지 확인하는것 'zwi' in score
+			True
+
+Score.clear
+
+
+Tuple 소괄호 사용
+
+
+import turtle
+
+from turtle import *
+하면 turtle.forward가 아닌 forward사용가능
+
+randrange[ ), randint [ ]
+
+
+문자열도 == 가능
+
+' ' , " " 분간 안함
+
+
+튜플이라는것을 이용해서 쌍을 이용해서 대입해야하는 변수를 한꺼번에 대입한다.
+
+a = 'AAA'
+b = 'BBB'
+
+a,b = b,a
+
+a = 'BBB'
+b = 'AAA'
+
+튜플, 리스트 리턴 가능
+
+event driven, message driven 
+코드의 컨트롤을 사용자가 아니라 시스템에게 맡기는것
+
+이 함수는 리턴을하지 않는다
+
+이벤트 함수를 만들면 시스템이 이벤트를 기다리다가 이벤트가 발생하면
+사용자에게 알려주는 시스템
+
+이벤트 핸들러, 콜백

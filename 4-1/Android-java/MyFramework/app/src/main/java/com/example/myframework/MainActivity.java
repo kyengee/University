@@ -1,4 +1,4 @@
-package com.example.myframework;
+package com.example.shoting.myframework;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
