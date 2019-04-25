@@ -90,24 +90,35 @@ public class LogLookUp extends AppCompatActivity {
                             this.send("5");
                             this.send(start.getText().toString());
                             this.send(end.getText().toString());
-                            //loglayout.removeAllViewsInLayout();
+
+                            runOnUiThread(new Runnable() {
+                                @Override public void run() {
+                                    loglayout.removeAllViews();
+                                }
+                            });
+
 
                         }
 
                         @Override
-                        public void onMessage(String message) {
+                        public void onMessage(final String message) {
                             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
                             if (message.equals("End")) {
-                                Log.v("End", "End");
                                 this.close();
                             }
                             else{
-                                Log.v(message,"else");
-                                TextView text = new TextView(LogLookUp.this);
-                                text.setText(message);
-                                text.setLayoutParams(layoutParams);
-                                text.setGravity(Gravity.CENTER);
-                                loglayout.addView(text);
+                                runOnUiThread(new Runnable() {
+                                    @Override public void run() {
+                                        TextView t = new TextView(LogLookUp.this);
+                                        t.setText(message);
+                                        t.setTextSize(25);
+                                        t.setPadding(0,10,0,10);
+                                        t.setLayoutParams(new LinearLayout.LayoutParams(
+                                                LinearLayout.LayoutParams.FILL_PARENT,
+                                                LinearLayout.LayoutParams.WRAP_CONTENT));
+                                        loglayout.addView(t);
+                                    }
+                                });
                             }
 
 
