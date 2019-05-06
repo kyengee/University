@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     rescaled_x = rescale(x)
     beta = estimate_beta(rescaled_x, y)
-    print(beta)
+    print("beta:", beta)
 
     #plt.scatter(np.array(rescaled_x)@np.array(beta),y)
     plt.scatter(np.dot(rescaled_x, beta), y)
@@ -115,18 +115,19 @@ if __name__ == "__main__":
     print("recall", recall)
 
     # by Scikit-Learn
-    print("Scikit-Learn LogisticRegression")
-    LogReg = LogisticRegression(random_state=10,solver='sag').fit(x_train,y_train)
-    print("Score:", LogReg.score(x_train,y_train))
+    print("\n---------Scikit-Learn LogisticRegression--------")
+    LogReg = LogisticRegression(penalty='l1', solver='liblinear',fit_intercept=False).fit(x_train,y_train)
 
-    print("probabilty:")
-    print(np.array(x_train)[:1,:],LogReg.predict_proba(x_train[:1]) )
+    #print("probabilty:")
+    #print(np.array(x_train)[:1,:],LogReg.predict_proba(x_train[:1]) )
+    print("beta_hat:",LogReg.coef_)
+    print("Score:", LogReg.score(x_train, y_train))
 
     true_positives = false_positives = true_negatives = false_negatives = 0
     predict2 = LogReg.predict(x_test)
 
-    print("predict1\n", np.array(p_list))
-    print("predict2\n", predict2)
+    #print("predict1\n", np.array(p_list))
+    #print("predict2\n", predict2)
 
     for p_i, y_i in zip(predict2, y_test):
         if y_i == 1 and p_i == 1:  # TP: paid and we predict paid
@@ -143,5 +144,14 @@ if __name__ == "__main__":
 
     print("precision", precision)
     print("recall", recall)
+
+    # Multinomial
+    print("\n---------Scikit-Learn LogisticRegression-(2) Multinomial--------")
+    from sklearn.datasets import load_iris
+    X, y = load_iris(return_X_y=True)
+    clf = LogisticRegression(random_state=0, max_iter=10000, solver='lbfgs', multi_class='multinomial').fit(X, y)
+    print("Predict:", clf.predict(X[:2, :]))
+    print("Proba:", clf.predict_proba(X[:2, :]))
+    print("Score:", clf.score(X, y))
 
 
