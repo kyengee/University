@@ -30,6 +30,7 @@ public:
 
 	XMFLOAT3					m_xmf3RotationAxis;
 	float						m_fRotationSpeed = 0.0f;
+	int							type = 0;
 
 public:
 	void SetMesh(CMesh *pMesh) { m_pMesh = pMesh; if (pMesh) pMesh->AddRef(); }
@@ -61,59 +62,4 @@ public:
 	virtual void OnPreRender() { }
 	virtual void Render(HDC hDCFrameBuffer, CCamera *pCamera);
 };
-
-class CWallsObject : public CGameObject
-{
-public:
-	CWallsObject();
-	virtual ~CWallsObject();
-
-public:
-	XMFLOAT4					m_pxmf4WallPlanes[6];
-};
-
-class CExplosiveObject : public CGameObject
-{
-public:
-	CExplosiveObject();
-	virtual ~CExplosiveObject();
-
-	bool						m_bBlowingUp = false;
-
-	XMFLOAT4X4					m_pxmf4x4Transforms[EXPLOSION_DEBRISES];
-
-	float						m_fElapsedTimes = 0.0f;
-	float						m_fDuration = 2.5f;
-	float						m_fExplosionSpeed = 10.0f;
-	float						m_fExplosionRotation = 720.0f;
-
-	virtual void Animate(float fElapsedTime);
-	virtual void Render(HDC hDCFrameBuffer, CCamera *pCamera);
-
-public:
-	static CMesh				*m_pExplosionMesh;
-	static XMFLOAT3				m_pxmf3SphereVectors[EXPLOSION_DEBRISES];
-
-	static void PrepareExplosion();
-};
-
-class CTerrainObject : public CGameObject
-{
-public:
-	CTerrainObject();
-	virtual ~CTerrainObject();
-};
-
-class CFollowerObject : public CGameObject
-{
-public:
-	CFollowerObject(CGameObject *pTarget);
-	virtual ~CFollowerObject();
-
-	CGameObject					*m_pTarget = NULL;
-	XMFLOAT3					m_xmf3InitialPosition;
-
-	virtual void Animate(float fElapsedTime);
-};
-
 

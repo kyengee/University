@@ -20,6 +20,8 @@ public:
 	float           			m_fPitch = 0.0f;
 	float           			m_fYaw = 0.0f;
 	float           			m_fRoll = 0.0f;
+	float						timeslap = 0.0f;
+	int							count = 0;
 
 	CCamera						*m_pCamera = NULL;
 

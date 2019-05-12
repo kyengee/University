@@ -58,25 +58,9 @@ public:
 	virtual ~CCubeMesh();
 };
 
-class CWallMesh : public CMesh
-{
-public:
-	CWallMesh(float fWidth = 4.0f, float fHeight = 4.0f, float fDepth = 4.0f, int nSubRects = 20);
-	virtual ~CWallMesh();
-};
-
 class CAirplaneMesh : public CMesh
 {
 public:
 	CAirplaneMesh(float fWidth = 20.0f, float fHeight = 20.0f, float fDepth = 4.0f);
 	virtual ~CAirplaneMesh();
 };
-
-class CTerrainMesh : public CMesh
-{
-public:
-	CTerrainMesh(float fWidth = 100.0f, float fHeight = 4.0f, float fDepth = 100.0f, int nSubRects = 20);
-	virtual ~CTerrainMesh();
-};
-
-
