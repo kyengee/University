@@ -15,8 +15,7 @@ def main():
 	'title' : 'manager page',
 	'inform' : 'select function'
 	}
-
-        return render_template('main.html', **templateData)
+	return render_template('main.html', **templateData)
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -55,7 +54,7 @@ def echo_log():
 	conn = sqlite3.connect('DoorLock.db')
 	cur = conn.cursor()
 
-        day = request.form.get('day')
+	day = request.form.get('day')
 	year = request.form.get('year')
 	month = request.form.get('month')
 
@@ -68,8 +67,8 @@ def echo_log():
 	for i in cur:
 		result.append((i[0] + ' ' + i[1] + ' ' + i[2] + ' ' + i[3] + ' ' + i[4] + ' | name : ' + i[5] + ' | id : ' + i[6]))	
 	
-        return  "</br>".join(result)
+		return  "</br>".join(result)
 
 if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=8888, debug=True, threaded=True)
+		app.run(host='0.0.0.0', port=8888, debug=True, threaded=True)
 
