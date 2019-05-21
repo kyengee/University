@@ -16,6 +16,7 @@ def get_ipaddress():
 async def echo(websocket, path):
     message = await websocket.recv() 
     print(message)
+    await websocket.send(message) 
 
  
 print("Server start: "+get_ipaddress())
