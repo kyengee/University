@@ -1,4 +1,4 @@
-package com.example.shoting.myframework;
+package com.example.myframework;
 
 import android.content.Context;
 import android.content.res.Resources;

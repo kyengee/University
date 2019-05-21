@@ -17,7 +17,7 @@ public class Player extends SpriteAnimation {
 	public Player(Bitmap bitmap) {
 		super(bitmap);
 		// �좊땲硫붿씠���뺣낫瑜��명똿�댁���
-		this.InitSpriteData(104	, 62, 3, 6);
+		this.InitSpriteData(150	, 180, 8, 4);
 		// 珥덇린 �꾩튂媛믪쓣 �ㅼ젙�댁���
 		this.SetPosition(140, 380);
 	}
