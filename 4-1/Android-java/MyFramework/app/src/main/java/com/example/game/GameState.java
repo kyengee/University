@@ -63,7 +63,7 @@ public class GameState implements IState {
 	}
 	@Override
 	public void Init() {
-        m_player = new Player(AppManager.getInstance().getBitmap(R.drawable.playerblackdragon));
+        m_player = new Player(AppManager.getInstance().getBitmap(R.drawable.playerreddragon));
         m_keypad=new GraphicObject(AppManager.getInstance().getBitmap(R.drawable.keypad));
         m_shootpad = new GraphicObject(AppManager.getInstance().getBitmap(R.drawable.missile_1));
         m_background=new BackGround(1);

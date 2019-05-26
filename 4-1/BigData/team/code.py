@@ -7,10 +7,11 @@ def make_cv_diff_rate(Dataframe):
 
 	for index in Dataframe.index:
 		if index == last_index: break
-		cv_diff_rate_Series.at[index] = 100 - close_value_Series.at[index] / close_value_Series.at[index + 1] * 100
-	print(cv_diff_rate_Series)
+		cv_diff_rate_Series.at[index] = close_value_Series.at[index] / close_value_Series.at[index + 1] * 100 - 100
+	return cv_diff_rate_Series
 
 def make_ud_Nd(N, Dataframe):
+	if len(Dataframe) < N: return pandas.Series([])
 	close_value_Series = Dataframe["close_value"]
 	ud_Nd_Series = Dataframe["ud_" + str(N) + "d"]
 	last_index = close_value_Series.index[-N]
@@ -29,9 +30,10 @@ def make_ud_Nd(N, Dataframe):
 		else:
 			val = 0
 		ud_Nd_Series.at[index + 1] = val
-	print(ud_Nd_Series)
+	return ud_Nd_Series
 
 def make_cvNd_diff_rate(N, Dataframe):
+	if len(Dataframe) < N: return pandas.Series([])
 	close_value_Series = Dataframe["close_value"]
 	cvNd_diff_rate_Series = Dataframe["cv" + str(N) + "d_diff_rate"]
 	last_index = close_value_Series.index[-N]
@@ -39,12 +41,25 @@ def make_cvNd_diff_rate(N, Dataframe):
 	for index in Dataframe.index:
 		if index == last_index: break
 		cvNd_diff_rate_Series.at[index + 1] = (close_value_Series.at[index] - close_value_Series.at[index + N]) / close_value_Series.at[index + N]
-	print(cvNd_diff_rate_Series)
+	return cvNd_diff_rate_Series
 
 
 
 df = pandas.read_csv("stock_history.csv", encoding='CP949')
 
 for name, group in df.groupby("stockname"):
-	make_cvNd_diff_rate(3, group)
-	break;
+	result = make_cv_diff_rate(group)
+	df.loc[result.index,'cv_diff_rate'] = result
+
+	for N in range(3,6,1):
+		result = make_ud_Nd(N, group)
+		if result.empty is False:
+			df.loc[result.index,'ud_'+str(N)+'d'] = result
+
+		result = make_cvNd_diff_rate(N, group)
+		if result.empty is False:
+			df.loc[result.index,'cv'+str(N)+'d_diff_rate'] = result
+
+	print(name)
+
+df.to_csv("aa.csv", index = False, encoding='ms949')
