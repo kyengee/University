@@ -27,7 +27,7 @@ def cv_diff_rate_compare(Dataframe):
 
 TOP5 = []
 
-df = pandas.read_csv("stock_history_add2.csv", encoding='CP949')
+df = pandas.read_csv("stock_history_add.csv", encoding='CP949')
 
 for name, group in df.groupby("stockname"):
 	# cv_diff_rate의 +의총합/ cv_diff_rate의 -의총합 의 비율이 가장 큰 TOP5를 선정
@@ -42,3 +42,13 @@ TOP5 = sorted_list[:10]
 sorted_list = sorted(TOP5, key=lambda t: t[2])
 print (sorted_list)
 
+
+
+
+'''result = make_cv_diff_rate_rate(group)
+	df.loc[result.index, 'cv_diff_rate_rate'] = result
+
+
+	print(name)
+
+df.to_csv("stock_history_add.csv", index=False, encoding='ms949')'''

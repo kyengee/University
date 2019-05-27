@@ -218,6 +218,7 @@ if __name__ == "__main__":
         # print("dot(beta[1:],beta[1:])", dot(beta[1:], beta[1:]))
         print("r-squared", multiple_r_squared(x, daily_minutes_good, beta))
         print()
+
     # (2) scikit-liearn 사용방법
     print("(2) by scikit-learn")
     for alpha in [0.0, 0.01, 0.1, 1, 10]:
