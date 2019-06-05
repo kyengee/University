@@ -5,10 +5,11 @@ image_data = []
 
 with open("digimon.jpg", "rb") as image:
   f = image.read()
-  b = bytearray(f)
-  print(b[0])
+  print(len(f))
+  b = bytearray()
+  b.append(3)
+  print(len(b))
   image_data = b
-
 image = Image.open(io.BytesIO(image_data))
 image.show()
 
