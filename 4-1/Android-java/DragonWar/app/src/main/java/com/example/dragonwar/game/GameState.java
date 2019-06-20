@@ -6,11 +6,31 @@ import android.view.MotionEvent;
 
 import com.example.dragonwar.framework.IState;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 
 public class GameState implements IState {
     // 멤버 변수 추가할 곳
     private background1 m_background;
     private player m_player;
+    Random randEnem = new Random();
+
+    long LastMonster = System.currentTimeMillis();
+    ArrayList<Monster> monsterlist = new ArrayList<Monster>();
+
+    private MonsterA enem = new MonsterA();
+
+    public void SetMonster() {
+        if (System.currentTimeMillis() - LastMonster >= 1000) {
+            Monster enem = new MonsterA();
+            enem.SetPosition(100, 60);
+            enem.movetype = Monster.MOVE_PATTERN_1;
+
+            monsterlist.add(enem);
+            LastMonster = System.currentTimeMillis();
+        }
+    }
 
     @Override
     public void Destroy() {
@@ -20,12 +40,15 @@ public class GameState implements IState {
     @Override
     public void Init() {
         m_background = new background1();
-        m_player = new player_red();
+        m_player = new player_green();
     }
 
     @Override
     public void Render(Canvas canvas) {
         m_background.Draw(canvas);
+        for( Monster enem : monsterlist){
+            enem.Draw(canvas);
+        }
         m_player.Draw(canvas);
 
     }
@@ -34,6 +57,11 @@ public class GameState implements IState {
     public void Update() {
         long GameTime = System.currentTimeMillis();
         m_player.Update(GameTime);
+        m_background.Update(GameTime);
+        for(Monster enem : monsterlist){
+            enem.Update(GameTime);
+        }
+        SetMonster();
     }
 
     @Override
