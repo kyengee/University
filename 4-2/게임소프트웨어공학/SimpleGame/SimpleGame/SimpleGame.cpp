@@ -13,18 +13,14 @@ but WITHOUT ANY WARRANTY.
 #include "Dependencies\glew.h"
 #include "Dependencies\freeglut.h"
 
-#include "Renderer.h"
+#include "ScrMgr.h"
 
-Renderer *g_Renderer = NULL;
+ScrMgr* g_ScrMgr = NULL;
 
 void RenderScene(void)
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
-
-	// Renderer Test
-	g_Renderer->DrawSolidRect(0, 0, 0, 4, 1, 0, 1, 1);
-
+	g_ScrMgr->RenderScene();
+	//glut에 관련된 함수는 이 파일에서만 사용하도록 함
 	glutSwapBuffers();
 }
 
@@ -66,13 +62,8 @@ int main(int argc, char **argv)
 	{
 		std::cout << "GLEW 3.0 not supported\n ";
 	}
-
-	// Initialize Renderer
-	g_Renderer = new Renderer(500, 500);
-	if (!g_Renderer->IsInitialized())
-	{
-		std::cout << "Renderer could not be initialized.. \n";
-	}
+	//클래스에 glut관련 함수가 있기 때문에 glew초기화 이후 할당해야함
+	g_ScrMgr = new ScrMgr();
 
 	glutDisplayFunc(RenderScene);
 	glutIdleFunc(Idle);
@@ -82,7 +73,7 @@ int main(int argc, char **argv)
 
 	glutMainLoop();
 
-	delete g_Renderer;
+	delete g_ScrMgr;
 
     return 0;
 }
