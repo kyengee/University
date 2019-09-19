@@ -10,7 +10,7 @@ import com.example.dragonwar.framework.SpriteAnimaion;
 
 public class background1 extends GraphicObject {
     static final float SCROLL_SPEED = 20.0f;
-    private float m_scroll=-7667+3040;
+    private float m_scroll=0;
 
     public background1() {
         super(null);
@@ -19,9 +19,9 @@ public class background1 extends GraphicObject {
     }
 
     void Update(long GameTime){
-        m_scroll = m_scroll+SCROLL_SPEED;
-        if(m_scroll>=0)
-            m_scroll = -7667+3040;
+        m_scroll = m_scroll-SCROLL_SPEED;
+        if(m_scroll<=-4437)
+            m_scroll = 0;
         SetPosition((int)m_scroll,0);
     }
 

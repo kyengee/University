@@ -9,6 +9,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.example.dragonwar.game.GameState;
+import com.example.dragonwar.game.IntroState;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     private GameViewThread m_thread;
@@ -22,7 +23,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
         AppManager.getInstance().setGameView(this);
         AppManager.getInstance().setResources(getResources());
 
-        ChangeGameState(new GameState());
+        ChangeGameState(new IntroState());
 
         getHolder().addCallback(this);
         m_thread = new GameViewThread(getHolder(),this);

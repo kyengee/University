@@ -11,6 +11,7 @@ public class Missile extends GraphicObject {
     int speed_y = 0;
     public static final int STATE_NORMAL = 0;
     public static final int STATE_OUT = 1;
+    int missiletype = 0;
 
     public int state =  STATE_NORMAL;
 
@@ -29,8 +30,15 @@ public class Missile extends GraphicObject {
 
         if(m_x > 3000 || m_x < 40 || m_y < 40 || m_y > 1400)
             state = STATE_OUT;
+        if (missiletype == 0)
+            m_BoundBox.set(m_x, m_y, m_x + 166, m_y + 95);
+        else if(missiletype == 3)
+            m_BoundBox.set(m_x, m_y, m_x + 350, m_y + 80);
+        else if(missiletype == 4)
+            m_BoundBox.set(m_x, m_y, m_x + 436, m_y + 127);
+        else
+            m_BoundBox.set(m_x, m_y, m_x + 64, m_x + 64);
 
-        m_BoundBox.set(m_x,m_y,m_x+43,m_y+43);
 
     }
 }

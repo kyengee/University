@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">gpsdamagochi</string>
+    <string name="hello_world">헬로 월드</string>
+    <string name="button">클릭</string>
+</resources>
