@@ -1,0 +1,108 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  SpongeCoremod (spongeforge-1.9.4-1968-5.0.0-BETA-1503.jar)
+Contact their authors BEFORE contacting forge
+
+// Don't be sad, have a hug! <3
+
+Time: 19. 7. 18 ¿ÀÀü 1:28
+Description: Exception in server tick loop
+
+net.minecraftforge.fml.common.LoaderException: java.lang.NoClassDefFoundError: com/boydti/fawe/object/FaweQueue
+	at net.minecraftforge.fml.common.LoadController.transition(LoadController.java:179)
+	at net.minecraftforge.fml.common.Loader.preinitializeMods(Loader.java:589)
+	at net.minecraftforge.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:92)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:321)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:429)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.NoClassDefFoundError: com/boydti/fawe/object/FaweQueue
+	at com.boydti.fawe.forge.ForgeMain.preInit(ForgeMain.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraftforge.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:566)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:228)
+	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:206)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+	at net.minecraftforge.fml.common.LoadController.redirect$onPost$0(LoadController.java:53)
+	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:135)
+	at net.minecraftforge.fml.common.Loader.preinitializeMods(Loader.java:586)
+	... 5 more
+Caused by: java.lang.ClassNotFoundException: com.boydti.fawe.object.FaweQueue
+	at net.minecraft.launchwrapper.LaunchClassLoader.findClass(LaunchClassLoader.java:191)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 34 more
+Caused by: java.lang.NoClassDefFoundError: com/sk89q/worldedit/extent/Extent
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at net.minecraft.launchwrapper.LaunchClassLoader.findClass(LaunchClassLoader.java:182)
+	... 36 more
+Caused by: java.lang.ClassNotFoundException: com.sk89q.worldedit.extent.Extent
+	at net.minecraft.launchwrapper.LaunchClassLoader.findClass(LaunchClassLoader.java:191)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 40 more
+Caused by: java.lang.NoClassDefFoundError: com/sk89q/worldedit/extent/InputExtent
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at net.minecraft.launchwrapper.LaunchClassLoader.findClass(LaunchClassLoader.java:182)
+	... 42 more
+Caused by: java.lang.ClassNotFoundException: com.sk89q.worldedit.extent.InputExtent
+	at net.minecraft.launchwrapper.LaunchClassLoader.findClass(LaunchClassLoader.java:191)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 46 more
+Caused by: java.lang.NullPointerException
+	at net.minecraft.launchwrapper.LaunchClassLoader.findClass(LaunchClassLoader.java:182)
+	... 48 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.9.4
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_211, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1442535224 bytes (1375 MB) / 2034761728 bytes (1940 MB) up to 3817865216 bytes (3641 MB)
+	JVM Flags: 2 total; -Xms1G -Xmx4G
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.28 Powered by Forge 12.17.0.1968 6 mods loaded, 6 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCH	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCH	FML{8.0.99.99} [Forge Mod Loader] ([Forge]1.9.4_12.17.0.1968.jar) 
+	UCH	Forge{12.17.0.1968} [Minecraft Forge] ([Forge]1.9.4_12.17.0.1968.jar) 
+	UCH	sponge{1.9.4-1968-5.0.0-BETA-1503} [SpongeForge] (spongeforge-1.9.4-1968-5.0.0-BETA-1503.jar) 
+	UCH	io.github.hsyyid.essentialcmds{@project.informativeVersion@} [EssentialCmds] (EssentialCmds-1.9.4-8.1.12-universal.jar) 
+	UCE	com.boydti.fawe{3.5.1} [FastAsyncWorldEdit] (FastAsyncWorldEdit-forge194-19.07.12-5cc5ce5-1277-22.3.0 (1).jar) 
+	Loaded coremods (and transformers): 
+SpongeCoremod (spongeforge-1.9.4-1968-5.0.0-BETA-1503.jar)
+  org.spongepowered.common.launch.transformer.SpongeSuperclassTransformer
+	Profiler Position: N/A (disabled)
+	Is Modded: Definitely; Server brand changed to 'fml,forge,sponge'
+	Type: Dedicated Server (map_server.txt)

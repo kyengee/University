@@ -1,0 +1,21 @@
+lastAccountName: 3Nyang
+timestamps:
+  login: 1565696608465
+  logout: 1565701607357
+  lastteleport: 1565701434057
+ipAddress: 127.0.0.1
+logoutlocation:
+  world: world
+  x: 606.5324168388578
+  y: 163.0
+  z: 159.80509404147392
+  yaw: 163.70251
+  pitch: 41.795517
+lastlocation:
+  world: world
+  x: 419.38165873269287
+  y: 148.56062034242495
+  z: 93.78679721687145
+  yaw: 203.48615
+  pitch: -12.413623
+afk: false
