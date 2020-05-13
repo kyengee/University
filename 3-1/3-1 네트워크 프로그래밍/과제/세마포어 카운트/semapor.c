@@ -1,56 +1,17 @@
-#include <stdio.h>
-#include <pthread.h>
-#include <semaphore.h>
-
-void * read(void * arg);
-void * accu(void * arg);
-static sem_t sem_one;
-static sem_t sem_two;
-static int num;
-
-int main(int argc, char *argv[])
-{
-	pthread_t id_t1, id_t2;
-	sem_init(&sem_one, 0, 0);
-	sem_init(&sem_two, 0, 1);
-
-	pthread_create(&id_t1, NULL, read, NULL);
-	pthread_create(&id_t2, NULL, accu, NULL);
-
-	pthread_join(id_t1, NULL);
-	pthread_join(id_t2, NULL);
-
-	sem_destroy(&sem_one);
-	sem_destroy(&sem_two);
-	return 0;
-}
-
-void * read(void * arg)
-{
-	int i;
-	for(i=0; i<5; i++)
-	{
-		printf("sem_one.count = %d\n",sem_one.sem_count);
-		printf("sem_two.count = %d\n",sem_two.sem_count);
-		fputs("Input num: ", stdout);
-
-		sem_wait(&sem_two);
-		scanf("%d", &num);
-		printf("sem_one.count = %d\n",sem_one.sem_count);
-		printf("sem_two.count = %d\n",sem_two.sem_count);
-		sem_post(&sem_one);
-	}
-	return NULL;	
-}
-void * accu(void * arg)
-{
-	int sum=0, i;
-	for(i=0; i<5; i++)
-	{
-		sem_wait(&sem_one);
-		sum+=num;
-		sem_post(&sem_two);
-	}
-	printf("Result: %d \n", sum);
-	return NULL;
-}
+case 'W':
+		{
+			if (m_nObjects <= 10) m_nObjects++;
+			m_ppObjects[m_nObjects -1] = new CGameObject();
+			m_ppObjects[m_nObjects - 1]->SetMesh(pObjectCubeMesh);
+			m_ppObjects[m_nObjects - 1]->SetColor(RGB(255, 0, 0));
+			m_ppObjects[m_nObjects - 1]->SetPosition(m_ppObjects[m_nObjects - 2]->GetPosition());
+			m_ppObjects[m_nObjects - 1]->SetRotationAxis(XMFLOAT3(0.0f, 0.0f, 0.0f));
+			m_ppObjects[m_nObjects - 1]->SetRotationSpeed(0.0f);
+			m_ppObjects[m_nObjects - 1]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 0.0f));
+			m_ppObjects[m_nObjects - 1]->SetMovingSpeed(0.0f);
+			m_ppObjects[m_nObjects - 1]->m_xmf4x4World = m_ppObjects[m_nObjects - 2]->m_xmf4x4World;
+			m_ppObjects[m_nObjects - 1]->MoveForward(16);
+			m_ppObjects[m_nObjects - 1]->Rotate(-30.0f, 0.0f, 0.0f);
+			m_ppObjects[m_nObjects - 1]->type = 1;
+			break;
+		}

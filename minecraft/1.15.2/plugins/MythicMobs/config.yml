@@ -9,7 +9,7 @@ Configuration:
     CompatibilityMode: false
     DebugLevel: 0
     ErrorLogging: true
-    Language: enUS
+    Language: koKR
     UseVolatileFeatures: true
   Clock:
     ClockInterval: 1

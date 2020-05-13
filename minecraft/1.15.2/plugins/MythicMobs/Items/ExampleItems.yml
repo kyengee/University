@@ -5,9 +5,9 @@
 SkeletonKingSword:
   Id: DIAMOND_SWORD
   Data: 0
-  Display: '&3Greatsword of the Skeleton King'
+  Display: '&3Greatsword of the Sっっっn King'
   Lore:
-  - '&6A powerful sword used by'
+  - '&6A powerful sword usぞぞぞed by'
   - '&6the King of Skeletons.'
   Enchantments:
   - DAMAGE_ALL:5
