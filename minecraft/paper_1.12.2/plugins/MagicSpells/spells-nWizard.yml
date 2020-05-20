@@ -1,0 +1,128 @@
+nWizard_Teleport_spell:
+  spell-class: ".MultiSpell"
+  name: nWizard_Teleport_spell
+  spells:
+    - 잔상
+    - nWizard_Teleport
+
+nWizard_Teleport:
+    spell-class: ".targeted.BlinkSpell"
+    name: nWizard_Teleport
+    range: 12
+
+nWizard_Buff_speed_spell:
+  spell-class: ".MultiSpell"
+  name: nWizard_Buff_speed_spell
+  spells:
+    - 버프1
+    - nWizard_Buff_speed
+    
+nWizard_Buff_speed:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: nWizard_Buff_speed
+    type: resistance
+    duration: 400
+    strength: 0
+
+nWizard_bolt_spell:
+    spell-class: ".instant.ParticleProjectileSpell"
+    name: nWizard_bolt_spell
+    projectile-velocity: 10
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 3
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: true
+    stop-on-hit-ground: true
+    spell: nWizard_bolt_DMG
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib: 
+          class: SphereEffect
+          particle: REDSTONE
+          color: 59F4FF
+          radius: 0.5
+          particles: 10
+          iterations: 3
+          relativeOffset: 0,0.5,0
+      2:
+        position: caster
+        effect: sound
+        sound: entity.blaze.shoot
+        volum: 3
+        pitch: 0.8
+
+nWizard_bolt_DMG:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  can-target: players, monsters, animals
+
+nWizard_claw_spell:
+  spell-class: ".targeted.PainSpell"
+  name: nWizard_claw_spell
+  damage: 4
+  range: 10
+  can-target: players, monsters, animals
+  effects:
+    1:
+      position: target
+      effect: effectlib
+      effectlib: 
+        class: EquationEffect
+        particle: REDSTONE
+        color: FF0000
+        xEquation: 0
+        yEquation: "(10-(t%10))*0.15 - 0.2"
+        zEquation: "(10-(t%10))*0.15 - 0.2"
+        iterations: 10
+        particles: 2
+        period: 1
+        relativeOffset: 0.5,0.7,-0.7
+    2:
+      position: target
+      effect: effectlib
+      effectlib: 
+        class: EquationEffect
+        particle: REDSTONE
+        color: FF0000
+        xEquation: 0
+        yEquation: "(5-(t%5))*0.2 + 0.4"
+        zEquation: "(5-(t%5))*0.2 - 0.4"
+        iterations: 5
+        particles: 2
+        period: 1
+        relativeOffset: 0.5,0.7,-0.7
+    3:
+      position: target
+      effect: effectlib
+      effectlib: 
+        class: EquationEffect
+        particle: REDSTONE
+        color: FF0000
+        xEquation: 0
+        yEquation: "(5-(t%5))*0.2 - 0.4"
+        zEquation: "(5-(t%5))*0.2 + 0.5"
+        iterations: 5
+        particles: 2
+        period: 1
+        relativeOffset: 0.5,0.7,-0.7
+    4:
+      position: caster
+      effect: sound
+      sound: entity.spider.death
+      volum: 3
+      pitch: 1.3

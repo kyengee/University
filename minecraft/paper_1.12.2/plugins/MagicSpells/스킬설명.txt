@@ -1,0 +1,23 @@
+전사스킬
+nWarrior_leap_spell : 대쉬스킬
+nWarrior_Buff_speed_spell : 재생버프스킬
+nWarrior_PowerHit_spell : 강타스킬
+nWarrior_Slash_spell : 검기스킬
+
+궁수스킬
+nArcher_leap_spell : 점프스킬
+nArcher_Buff_speed_spell : 신속버프스킬
+nArcher_PowerShot_spell : 파워샷스킬
+nArcher_PoisonShot_spell : 독화살스킬
+
+도적스킬
+nThief_leap_spell : 점프스킬
+nThief_Buff_speed_spell : 신속버프스킬
+nThief_PoisonHit_spell : 독검스킬
+nThief_dart_spell : 수리검스킬
+
+마법사스킬
+nWizard_Teleport_spell : 텔레포트스킬
+nWizard_Buff_speed_spell : 저항버프스킬
+nWizard_bolt_spell : 볼트스킬
+nWizard_claw_spell : 발톱스킬
