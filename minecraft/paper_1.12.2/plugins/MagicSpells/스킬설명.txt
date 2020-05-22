@@ -1,23 +1,39 @@
 전사스킬
 nWarrior_leap_spell : 대쉬스킬
 nWarrior_Buff_speed_spell : 재생버프스킬
-nWarrior_PowerHit_spell : 강타스킬
-nWarrior_Slash_spell : 검기스킬
+nWarrior_PowerHit_spell : 강타1스킬(타겟)
+nWarrior_PowerHit_spell2 : 강타2스킬(타겟)
+nWarrior_PowerHit_spell3 : 강타3스킬(타겟 3번강타)
+nWarrior_Slash_spell : 검기스킬(검기1개)
+nWarrior_Slash_spel2l : 검기2스킬(검기2개 관통)
+nWarrior_Slash_spell3 : 검기3스킬(검기1개 관통)
 
 궁수스킬
 nArcher_leap_spell : 점프스킬
 nArcher_Buff_speed_spell : 신속버프스킬
-nArcher_PowerShot_spell : 파워샷스킬
-nArcher_PoisonShot_spell : 독화살스킬
+nArcher_PowerShot_spell : 파워샷스킬(화살1개)
+nArcher_PowerShot_spell2 : 파워샷2스킬(화살3개)
+nArcher_PowerShot_spell3 : 파워샷3스킬(화살1개 관통)
+nArcher_PoisonShot_spell : 독화살스킬(화살1개)
+nArcher_PoisonShot_spell2 : 독화살2스킬(화살2개 관통)
+nArcher_PoisonShot_spell3 : 독화살3스킬(화살1개 범위피해)
 
 도적스킬
 nThief_leap_spell : 점프스킬
 nThief_Buff_speed_spell : 신속버프스킬
-nThief_PoisonHit_spell : 독검스킬
-nThief_dart_spell : 수리검스킬
+nThief_PoisonHit_spell : 독검스킬(타겟)
+nThief_PoisonHit_spell2 : 독검2스킬(타겟 2번강타)
+nThief_PoisonHit_spell3 : 독검3스킬(타겟 3번강타)
+nThief_dart_spell : 수리검스킬(수리검1개)
+nThief_dart_spell2 : 수리검2스킬(수리검 3개)
+nThief_dart_spell3 : 수리검3스킬(수리검1개 관통)
 
 마법사스킬
 nWizard_Teleport_spell : 텔레포트스킬
 nWizard_Buff_speed_spell : 저항버프스킬
-nWizard_bolt_spell : 볼트스킬
-nWizard_claw_spell : 발톱스킬
+nWizard_bolt_spell : 볼트스킬(볼트1개)
+nWizard_bolt_spell2 : 볼트2스킬(볼트3개 관통)
+nWizard_bolt_spell3 : 볼트3스킬(파이어볼1개 관통)
+nWizard_claw_spell : 발톱스킬(타겟 1번공격)
+nWizard_claw_spell2 : 발톱2스킬(타겟 2번공격)
+nWizard_claw_spell3 : 발톱3스킬(타겟6번공격)

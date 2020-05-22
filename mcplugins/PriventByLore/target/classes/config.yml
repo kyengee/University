@@ -1,1 +1,10 @@
-lore: "aaa"
+prevent_all: "this item can't move"
+p_DropItem: "can't drop"
+p_Consume: "can't consume"
+p_PickupInInventory: "can't move"
+p_Enchant: "can't enchant"
+p_place: "can't place"
+p_ItemDamage: "can't Item damage"
+p_ItemFrame: "can't put in itemframe"
+p_RightClick: "can't rightclick"
+

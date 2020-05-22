@@ -84,6 +84,118 @@ nArcher_PowerShot_DMG:
   damage: 4
   can-target: players, monsters, animals
 
+nArcher_PowerShot_spell2:
+    spell-class: ".MultiSpell"
+    name: nArcher_PowerShot_spell2
+    spells:
+        - nArcher_PowerShot2_spell
+        - DELAY 13
+        - nArcher_PowerShot2_spell
+        - DELAY 13
+        - nArcher_PowerShot2_spell
+
+nArcher_PowerShot2_spell:
+    spell-class: ".instant.ParticleProjectileSpell"
+    name: nArcher_PowerShot2_spell
+    projectile-velocity: 10
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 15
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: true
+    stop-on-hit-ground: true
+    spell: nArcher_PowerShot2_pain
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: REDSTONE
+          color: F0FF00
+          xEquation: 0.2t
+          yEquation: 0
+          zEquation: 0
+          particles: 10
+          iterations: 1
+          period: 1
+          relativeOffset: 0,0,0
+      2:
+        position: caster
+        effect: sound
+        sound: entity.blaze.shoot
+        volum: 3
+        pitch: 0.8
+
+nArcher_PowerShot2_pain:
+  spell-class: ".TargetedMultiSpell"
+  name: nArcher_PowerShot_pain
+  spells:
+    - hit_effect_lava
+    - nArcher_PowerShot2_DMG
+
+nArcher_PowerShot2_DMG:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  can-target: players, monsters, animals
+
+nArcher_PowerShot_spell3:
+    spell-class: ".instant.ParticleProjectileSpell"
+    name: nArcher_PowerShot_spell3
+    projectile-velocity: 7
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 15
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: nArcher_PowerShot_pain
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: REDSTONE
+          color: C2FF63
+          xEquation: 0.2t
+          yEquation: 0
+          zEquation: 0
+          particles: 15
+          iterations: 3
+          period: 1
+          relativeOffset: 0,0,0
+      2:
+        position: caster
+        effect: sound
+        sound: entity.blaze.shoot
+        volum: 3
+        pitch: 0.8
+
 nArcher_PoisonShot_spell:
     spell-class: ".instant.ParticleProjectileSpell"
     name: nArcher_PoisonShot_spell
@@ -150,4 +262,140 @@ nArcher_PoisonShot_DMG:
         period: 20
         relativeOffset: 0,1,0
 
+nArcher_PoisonShot_spell2:
+    spell-class: ".MultiSpell"
+    name: nArcher_PoisonShot_spell2
+    spells:
+        - nArcher_PoisonShot2_1
+        - DELAY 13
+        - nArcher_PoisonShot2_1
 
+nArcher_PoisonShot2_1:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 13
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 3
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: nArcher_PoisonShot2_DMG
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: REDSTONE
+          color: 0B9E00
+          xEquation: 0.2(t%10)
+          yEquation: 0
+          zEquation: 0
+          particles: 10
+          iterations: 3
+          period: 10
+          relativeOffset: 0,0.5,0
+      2:
+        position: caster
+        effect: sound
+        sound: entity.blaze.shoot
+        volum: 3
+        pitch: 1.3
+
+nArcher_PoisonShot2_DMG:
+  spell-class: ".targeted.PotionEffectSpell"
+  type: poison
+  duration: 200
+  strength: 0
+  targeted: true
+  ambient: false
+  effects:
+    1:
+      position: target
+      effect: effectlibentity 
+      effectlib:
+        class: SphereEffect
+        particle: REDSTONE
+        color: 000000
+        radius: 1
+        particles: 5
+        iterations: 10
+        period: 20
+        relativeOffset: 0,1,0
+
+nArcher_PoisonShot_spell3:
+    spell-class: ".instant.ParticleProjectileSpell"
+    name: nArcher_PoisonShot_spell3
+    projectile-velocity: 7
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 3
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: true
+    stop-on-hit-ground: true
+    spell: nArcher_PoisonShot_Area
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: REDSTONE
+          color: 2D4B00
+          xEquation: 0.2(t%10)
+          yEquation: 0
+          zEquation: 0
+          particles: 10
+          iterations: 3
+          period: 10
+          relativeOffset: 0,0.5,0
+      2:
+        position: caster
+        effect: sound
+        sound: entity.blaze.shoot
+        volum: 3
+        pitch: 1.3
+
+nArcher_PoisonShot_Area:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 3
+    vertical-radius: 3
+    point-blank: false
+    spells: 
+      - nArcher_PoisonShot_DMG
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib:
+          class: SphereEffect
+          particle: REDSTONE
+          color: 99FF00
+          particles: 200
+          radius: 3
+          iterations: 7
+          period: 5

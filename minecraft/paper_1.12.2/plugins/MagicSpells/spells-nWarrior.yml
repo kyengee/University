@@ -48,7 +48,131 @@ nWarrior_PowerHit_spell:
     2:
       position: caster
       effect: sound
-      sound: block.anvil.hit
+      sound: block.anvil.place
+      volum: 3
+      pitch: 0.8
+
+nWarrior_PowerHit_spell2:
+  spell-class: ".targeted.PainSpell"
+  name: nWarrior_PowerHit_spell2
+  damage: 4
+  range: 3
+  can-target: players, monsters, animals
+  effects:
+    1:
+      position: target
+      effect: effectlibentity 
+      effectlib:
+        class: Star
+        iterations: 3
+        period: 1
+        particle: REDSTONE
+        color: E1D0B8
+        particles: 3
+        spike_height: 0.5
+        relativeOffset: 0,1.5,0
+    2:
+      position: caster
+      effect: sound
+      sound: block.anvil.place
+      volum: 3
+      pitch: 0.8
+    3:
+      position: target
+      effect: effectlibentity 
+      effectlib:
+        class: Star
+        iterations: 5
+        period: 1
+        particle: REDSTONE
+        color: BB4E20
+        particles: 3
+        spike_height: 0.3
+        relativeOffset: 0,1.5,0
+
+nWarrior_PowerHit_spell3:
+    spell-class: ".TargetedMultiSpell"
+    name: nWarrior_PowerHit_spell3
+    require-entity-target: true
+    spells:
+        - nWarrior_PowerHit_1
+        - DELAY 5
+        - nWarrior_PowerHit_2
+        - DELAY 5
+        - nWarrior_PowerHit_3
+
+nWarrior_PowerHit_1:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  range: 3
+  can-target: players, monsters, animals
+  effects:
+    1:
+      position: target
+      effect: effectlibentity 
+      effectlib:
+        class: Star
+        iterations: 3
+        period: 1
+        particle: REDSTONE
+        color: f0f8ff
+        particles: 3
+        spike_height: 0.1
+        relativeOffset: 1,2,0
+    2:
+      position: caster
+      effect: sound
+      sound: block.anvil.place
+      volum: 3
+      pitch: 0.8
+
+nWarrior_PowerHit_2:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  range: 3
+  can-target: players, monsters, animals
+  effects:
+    1:
+      position: target
+      effect: effectlibentity 
+      effectlib:
+        class: Star
+        iterations: 3
+        period: 1
+        particle: REDSTONE
+        color: f0f8ff
+        particles: 3
+        spike_height: 0.1
+        relativeOffset: 0,1.5,0
+    2:
+      position: caster
+      effect: sound
+      sound: block.anvil.place
+      volum: 3
+      pitch: 0.8
+
+nWarrior_PowerHit_3:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  range: 3
+  can-target: players, monsters, animals
+  effects:
+    1:
+      position: target
+      effect: effectlibentity 
+      effectlib:
+        class: Star
+        iterations: 3
+        period: 1
+        particle: REDSTONE
+        color: f0f8ff
+        particles: 3
+        spike_height: 0.1
+        relativeOffset: -1,1.8,-0.5
+    2:
+      position: caster
+      effect: sound
+      sound: block.anvil.place
       volum: 3
       pitch: 0.8
 
@@ -99,6 +223,165 @@ nWarrior_Slash_spell:
         pitch: 0.7
 
 nWarrior_Slash_DMG:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  can-target: players, monsters, animals
+
+nWarrior_Slash_spell2:
+    spell-class: ".MultiSpell"
+    name: nWarrior_Slash_spell2
+    spells:
+        - nWarrior_Slash2_1
+        - DELAY 5
+        - nWarrior_Slash2_2
+
+nWarrior_Slash2_1:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 10
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 3
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: nWarrior_Slash2_1DMG
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib: 
+          class: EquationEffect
+          particle: REDSTONE
+          color: f0f8ff
+          xEquation: "sin((0.2) * (t%15))"
+          yEquation: "0.2(t%15)"
+          zEquation: "0.2(t%15)"
+          iterations: 3
+          particles: 10
+          period: 1
+          cycle: true
+          relativeOffset: 0,0,-0.5
+      2:
+        position: caster
+        effect: sound
+        sound: entity.enderdragon.shoot
+        volum: 3
+        pitch: 0.7
+
+nWarrior_Slash2_1DMG:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  can-target: players, monsters, animals
+
+nWarrior_Slash2_2:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 10
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 3
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: nWarrior_Slash2_2DMG
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib: 
+          class: EquationEffect
+          particle: REDSTONE
+          color: f0f8ff
+          xEquation: "sin((0.2) * (t%15))"
+          yEquation: "0.2(t%15)"
+          zEquation: "-0.2(t%15)"
+          iterations: 3
+          particles: 10
+          period: 1
+          cycle: true
+          relativeOffset: 0,0,0.5
+      2:
+        position: caster
+        effect: sound
+        sound: entity.enderdragon.shoot
+        volum: 3
+        pitch: 0.7
+
+nWarrior_Slash2_2DMG:
+  spell-class: ".targeted.PainSpell"
+  damage: 4
+  can-target: players, monsters, animals
+
+nWarrior_Slash_spell3:
+    spell-class: ".instant.ParticleProjectileSpell"
+    name: nWarrior_Slash_spell3
+    projectile-velocity: 4
+    projectile-horiz-offset: 0
+    projectile-vert-offset: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    particle-name: blockdust
+    particle-speed: 0
+    particle-count: 0
+    max-distance: 15
+    max-duration: 3
+    render-distance: 32
+    hit-players: false
+    hit-non-players: true
+    hit-ground: false
+    hit-air-at-end: false
+    hit-air-during: false
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: nWarrior_Slash3_DMG
+    effects:
+      1:
+        position: special
+        effect: effectlib
+        effectlib: 
+          class: EquationEffect
+          particle: REDSTONE
+          color: f0f8ff
+          xEquation: "1.5*sin((0.2) * (t%15))"
+          yEquation: 0
+          zEquation: "0.25(t%15)"
+          iterations: 10
+          particles: 10
+          period: 1
+          cycle: true
+          relativeOffset: 0,0,-2
+      2:
+        position: caster
+        effect: sound
+        sound: entity.enderdragon.shoot
+        volum: 3
+        pitch: 0.7
+
+nWarrior_Slash3_DMG:
   spell-class: ".targeted.PainSpell"
   damage: 4
   can-target: players, monsters, animals
