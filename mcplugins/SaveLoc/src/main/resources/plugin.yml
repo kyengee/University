@@ -1,0 +1,9 @@
+name: Saveloc
+version: ${project.version}
+main: enjcat.saveloc.Saveloc
+authors: [Enjcat]
+description: Save location data
+
+commands:
+  saveloc:
+    description: "saveloc 플러그인의 여러 명령"

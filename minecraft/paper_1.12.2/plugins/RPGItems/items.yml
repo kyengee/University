@@ -1,4 +1,4 @@
-pos: 1
+pos: 2
 items:
   sword:
     name: sword
@@ -28,6 +28,41 @@ items:
     hitCostByDamage: false
     maxDurability: -1
     defaultDurability: -1
+    durabilityLowerBound: 0
+    durabilityUpperBound: 0
+    forceBar: false
+    showPowerText: true
+    showArmourLore: true
+    damageMode: FIXED
+    itemFlags:
+    - HIDE_ATTRIBUTES
+    customItemModel: false
+  흙설치권:
+    name: 흙설치권
+    id: 1
+    haspermission: false
+    display: 흙 설치권
+    quality: TRASH
+    damageMin: 0
+    damageMax: 3
+    armour: 0
+    type: '339'
+    hand: One handed
+    lore: ''
+    description: []
+    item: PAPER
+    ignoreWorldGuard: false
+    item_data: 0
+    powers: {}
+    recipechance: 6
+    hasRecipe: false
+    dropChances: {}
+    hitCost: 1
+    hittingCost: 1
+    blockBreakingCost: 1
+    hitCostByDamage: false
+    maxDurability: 0
+    defaultDurability: 0
     durabilityLowerBound: 0
     durabilityUpperBound: 0
     forceBar: false

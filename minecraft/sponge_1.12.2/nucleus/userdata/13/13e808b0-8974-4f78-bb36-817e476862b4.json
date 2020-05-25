@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "invulnerable": false,
+  "lastKnownName": "3Nyang",
+  "lastLogin": 1590131631331,
+  "lastLogout": 1590136979567,
+  "lastIP": "/127.0.0.1",
+  "firstJoin": 1590131631331,
+  "startedFirstJoin": false,
+  "vanish": false,
+  "jailOnNextLogin": false,
+  "warnings": [],
+  "notes": [],
+  "isFrozen": false,
+  "mail": [],
+  "powertools": {},
+  "lastLocation": {
+    "x": 25.280778362748077,
+    "y": 122.0,
+    "z": 2.476195450746213,
+    "rotx": 0.0,
+    "roty": 0.0,
+    "rotz": 0.0,
+    "world": "9853d37b-28f0-4d69-9034-78d8bf9009ac"
+  }
+}
