@@ -1,9 +1,0 @@
-name: PriventByLore
-version: 0.1
-main: enjcat.priventbylore.PriventByLore
-authors: [enjcat]
-description: Privent By Lore
-
-commands:
-  itemPBL:
-    description: on, off 옵션으로 플러그인 기능을 끄고 킬 수 있다.
